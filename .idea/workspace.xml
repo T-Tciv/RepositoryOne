@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4d93276-0dc1-4cd3-9b36-854cf4dbedc5" name="Default" comment="Первый коммит">
-      <change afterPath="$PROJECT_DIR$/Range/src/ru/tcivinskaya/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Range/src/ru/tcivinskaya/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Range/src/ru/tcivinskaya/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Range/src/ru/tcivinskaya/range/Range.java" beforeDir="false" afterPath="$PROJECT_DIR$/Range/src/ru/tcivinskaya/range/Range.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -19,8 +19,8 @@
       <file leaf-file-name="Range.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Range/src/ru/tcivinskaya/range/Range.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="-407">
+              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
               <folding>
                 <element signature="e#227#228#0" expanded="true" />
                 <element signature="e#254#255#0" expanded="true" />
@@ -34,6 +34,8 @@
                 <element signature="e#509#510#0" expanded="true" />
                 <element signature="e#559#560#0" expanded="true" />
                 <element signature="e#622#623#0" expanded="true" />
+                <element signature="e#688#689#0" expanded="true" />
+                <element signature="e#711#712#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,7 +44,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Range/src/ru/tcivinskaya/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
+            <state relative-caret-position="425">
               <caret line="25" selection-start-line="25" selection-end-line="25" />
             </state>
           </provider>
@@ -95,31 +97,13 @@
             <path>
               <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
               <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Range" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Shapes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
               <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Range" type="462c0819:PsiDirectoryNode" />
+              <item name="Shapes" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="tcivinskaya" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Range" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="tcivinskaya" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Range" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="tcivinskaya" type="462c0819:PsiDirectoryNode" />
-              <item name="range" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -332,6 +316,11 @@
     <MESSAGE value="Первый коммит" />
     <option name="LAST_COMMIT_MESSAGE" value="Первый коммит" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="4" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Shapes/Shapes.iml">
       <provider selected="true" editor-type-id="text-editor" />
@@ -368,15 +357,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Range/src/ru/tcivinskaya/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
+        <state relative-caret-position="425">
           <caret line="25" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Range/src/ru/tcivinskaya/range/Range.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="-407">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
           <folding>
             <element signature="e#227#228#0" expanded="true" />
             <element signature="e#254#255#0" expanded="true" />
@@ -390,6 +379,8 @@
             <element signature="e#509#510#0" expanded="true" />
             <element signature="e#559#560#0" expanded="true" />
             <element signature="e#622#623#0" expanded="true" />
+            <element signature="e#688#689#0" expanded="true" />
+            <element signature="e#711#712#0" expanded="true" />
           </folding>
         </state>
       </provider>
