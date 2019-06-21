@@ -33,60 +33,35 @@ public class Range {
         return ((userNumber >= from) && (to >= userNumber));
     }
 
-    public static double getRangeLength(Range range) {
-        return range.getTo() - range.getFrom();
-    }
-
-    public static Range getIntersection(Range firstRange, Range secondRange) {
-        double firstFrom = firstRange.getFrom();
-        double firstTo = firstRange.getTo();
-        double secondFrom = secondRange.getFrom();
-        double secondTo = secondRange.getTo();
-
-        if ((firstTo < secondFrom) || (secondTo < firstFrom)) {
+    public Range getIntersection(Range range) {
+        if ((to < range.from) || (range.to < from)) {
             return null;
         }
 
-        double from = (firstFrom > secondFrom) ? firstFrom : secondFrom;
-        double to = (firstTo < secondTo) ? firstTo : secondTo;
-
-        return new Range(from, to);
+        return new Range(Math.max(from, range.from), Math.min(to, range.to));
     }
 
-    public static Range[] getUnion(Range firstRange, Range secondRange) {
-        double firstFrom = firstRange.getFrom();
-        double firstTo = firstRange.getTo();
-        double secondFrom = secondRange.getFrom();
-        double secondTo = secondRange.getTo();
-
-        if ((firstTo < secondFrom) || (secondTo < firstFrom)) {
-            return new Range[]{firstRange, secondRange};
+    public Range[] getUnion(Range range) {
+        if ((to < range.from) || (range.to < from)) {
+            return new Range[]{this, range};
         }
 
-        double from = (firstFrom < secondFrom) ? firstFrom : secondFrom;
-        double to = (firstTo > secondTo) ? firstTo : secondTo;
-
-        return new Range[]{new Range(from, to)};
+        return new Range[]{new Range(Math.min(from, range.from), Math.max(to, range.to))};
     }
 
-    public static Range[] getDifference(Range firstRange, Range secondRange) {
-        double firstFrom = firstRange.getFrom();
-        double firstTo = firstRange.getTo();
-        double secondFrom = secondRange.getFrom();
-        double secondTo = secondRange.getTo();
-
-        if ((firstTo < secondFrom) || (secondTo < firstFrom)) {
-            return new Range[]{firstRange};
+    public Range[] getDifference(Range range) {
+        if ((to < range.from) || (range.to < from)) {
+            return new Range[]{this};
         }
 
-        if (firstFrom < secondFrom) {
-            if (firstTo <= secondTo) {
-                return new Range[]{new Range(firstFrom, secondFrom)};
+        if (from < range.from) {
+            if (to <= range.to) {
+                return new Range[]{new Range(from, range.from)};
             } else {
-                return new Range[]{new Range(firstFrom, secondFrom), new Range(secondTo, firstTo)};
+                return new Range[]{new Range(from, range.from), new Range(range.to, to)};
             }
-        } else if (firstTo > secondTo) {
-            return new Range[]{new Range(secondTo, firstTo)};
+        } else if (to > range.to) {
+            return new Range[]{new Range(range.to, to)};
         }
 
         return new Range[]{};
