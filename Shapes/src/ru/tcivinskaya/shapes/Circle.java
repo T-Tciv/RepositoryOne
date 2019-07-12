@@ -1,8 +1,6 @@
 package ru.tcivinskaya.shapes;
 
-import ru.tcivinskaya.shape.Shape;
-
-public class Circle implements Shape {
+public class Circle implements Shape, Cloneable {
     private double radius;
 
     public Circle(double radius) {
@@ -17,18 +15,22 @@ public class Circle implements Shape {
         this.radius = radius;
     }
 
+    @Override
     public double getWidth() {
         return radius * 2;
     }
 
+    @Override
     public double getHeight() {
         return radius * 2;
     }
 
+    @Override
     public double getArea() {
         return radius * radius * Math.PI;
     }
 
+    @Override
     public double getPerimeter() {
         return 2 * Math.PI * radius;
     }
@@ -59,5 +61,10 @@ public class Circle implements Shape {
         Circle comparedCircle = (Circle) object;
 
         return radius == comparedCircle.radius;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

@@ -1,8 +1,6 @@
 package ru.tcivinskaya.shapes;
 
-import ru.tcivinskaya.shape.Shape;
-
-public class Rectangle implements Shape {
+public class Rectangle implements Shape, Cloneable {
     private double width;
     private double height;
 
@@ -19,18 +17,22 @@ public class Rectangle implements Shape {
         this.width = width;
     }
 
+    @Override
     public double getHeight() {
         return height;
     }
 
+    @Override
     public double getWidth() {
         return width;
     }
 
+    @Override
     public double getArea() {
         return height * width;
     }
 
+    @Override
     public double getPerimeter() {
         return 2 * (height + width);
     }
@@ -62,5 +64,10 @@ public class Rectangle implements Shape {
         Rectangle comparedRectangle = (Rectangle) object;
 
         return (width == comparedRectangle.width && height == comparedRectangle.height);
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

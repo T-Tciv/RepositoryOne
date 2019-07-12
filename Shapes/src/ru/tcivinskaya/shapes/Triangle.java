@@ -1,8 +1,6 @@
 package ru.tcivinskaya.shapes;
 
-import ru.tcivinskaya.shape.Shape;
-
-public class Triangle implements Shape {
+public class Triangle implements Shape, Cloneable {
     private double x1;
     private double y1;
     private double x2;
@@ -67,20 +65,28 @@ public class Triangle implements Shape {
         this.y3 = y3;
     }
 
+    @Override
     public double getWidth() {
         return Math.max(x1, Math.max(x2, x3)) - Math.min(x1, Math.min(x2, x3));
     }
 
+    @Override
     public double getHeight() {
         return Math.max(y1, Math.max(y2, y3)) - Math.min(y1, Math.min(y2, y3));
     }
 
+    @Override
     public double getArea() {
         return 0.5 * Math.abs((x2 - x1) * (y3 - y1) - (x3 - x1) * (y2 - y1));
     }
 
+    @Override
     public double getPerimeter() {
-        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) + Math.sqrt(Math.pow(x3 - x1, 2) + Math.pow(y3 - y1, 2)) + Math.sqrt(Math.pow(x3 - x2, 2) + Math.pow(y3 - y2, 2));
+        return getLineSegmentLength(x1, y1, x2, y2) + getLineSegmentLength(x3, y3, x2, y2) + getLineSegmentLength(x1, y1, x3, y3);
+    }
+
+    private static double getLineSegmentLength(double x1, double y1, double x2, double y2) {
+        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
 
     @Override
@@ -114,5 +120,10 @@ public class Triangle implements Shape {
         Triangle comparedTriangle = (Triangle) object;
 
         return (x1 == comparedTriangle.x1 && y1 == comparedTriangle.y1 && x2 == comparedTriangle.x2 && y2 == comparedTriangle.y2 && x3 == comparedTriangle.x3 && y3 == comparedTriangle.y3);
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

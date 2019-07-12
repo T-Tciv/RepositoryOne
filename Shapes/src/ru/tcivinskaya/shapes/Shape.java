@@ -1,4 +1,4 @@
-package ru.tcivinskaya.shape;
+package ru.tcivinskaya.shapes;
 
 public interface Shape {
     double getWidth();
@@ -8,4 +8,6 @@ public interface Shape {
     double getArea();
 
     double getPerimeter();
+
+    Object clone() throws CloneNotSupportedException;
 }
