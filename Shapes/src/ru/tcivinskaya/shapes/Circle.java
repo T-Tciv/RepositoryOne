@@ -1,6 +1,6 @@
 package ru.tcivinskaya.shapes;
 
-public class Circle implements Shape, Cloneable {
+public class Circle implements Shape {
     private double radius;
 
     public Circle(double radius) {
@@ -61,10 +61,5 @@ public class Circle implements Shape, Cloneable {
         Circle comparedCircle = (Circle) object;
 
         return radius == comparedCircle.radius;
-    }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
     }
 }

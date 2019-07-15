@@ -1,6 +1,6 @@
 package ru.tcivinskaya.shapes;
 
-public class Rectangle implements Shape, Cloneable {
+public class Rectangle implements Shape {
     private double width;
     private double height;
 
@@ -64,10 +64,5 @@ public class Rectangle implements Shape, Cloneable {
         Rectangle comparedRectangle = (Rectangle) object;
 
         return (width == comparedRectangle.width && height == comparedRectangle.height);
-    }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
     }
 }

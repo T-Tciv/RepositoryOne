@@ -1,6 +1,6 @@
 package ru.tcivinskaya.shapes;
 
-public class Square implements Shape, Cloneable {
+public class Square implements Shape {
     private double length;
 
     public Square(double length) {
@@ -61,10 +61,5 @@ public class Square implements Shape, Cloneable {
         Square comparedSquare = (Square) object;
 
         return length == comparedSquare.length;
-    }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
     }
 }

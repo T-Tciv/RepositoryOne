@@ -1,6 +1,6 @@
 package ru.tcivinskaya.shapes;
 
-public class Triangle implements Shape, Cloneable {
+public class Triangle implements Shape {
     private double x1;
     private double y1;
     private double x2;
@@ -120,10 +120,5 @@ public class Triangle implements Shape, Cloneable {
         Triangle comparedTriangle = (Triangle) object;
 
         return (x1 == comparedTriangle.x1 && y1 == comparedTriangle.y1 && x2 == comparedTriangle.x2 && y2 == comparedTriangle.y2 && x3 == comparedTriangle.x3 && y3 == comparedTriangle.y3);
-    }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
     }
 }

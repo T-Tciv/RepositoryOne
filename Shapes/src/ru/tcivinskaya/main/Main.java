@@ -23,15 +23,7 @@ public class Main {
 
         Arrays.sort(sortedShapesArray, new SortByAreaComparator());
 
-        Shape maximalAreaShape = null;
-
-        try {
-            maximalAreaShape = (Shape) sortedShapesArray[sortedShapesArray.length - 1].clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-
-        return maximalAreaShape;
+        return sortedShapesArray[sortedShapesArray.length - 1];
     }
 
     private static Shape findSecondLargestPerimeterShape(Shape[] shapes) {
@@ -39,14 +31,6 @@ public class Main {
 
         Arrays.sort(sortedShapesArray, new SortByPerimeterComparator());
 
-        Shape secondLargestPerimeterShape = null;
-
-        try {
-            secondLargestPerimeterShape = (Shape) sortedShapesArray[sortedShapesArray.length - 2].clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-
-        return secondLargestPerimeterShape;
+        return sortedShapesArray[sortedShapesArray.length - 2];
     }
 }
