@@ -47,7 +47,6 @@ public class Vector {
         return "{ " + stringVector.substring(1, stringVector.length() - 1) + " }";
     }
 
-    // Пункт a
     public Vector makeVectorsAddition(Vector otherVector) {
         if (getSize() < otherVector.getSize()) {
             components = Arrays.copyOf(components, otherVector.getSize());
@@ -60,7 +59,6 @@ public class Vector {
         return this;
     }
 
-    // Пункт b
     public Vector makeVectorsSubtraction(Vector otherVector) {
         if (getSize() < otherVector.getSize()) {
             components = Arrays.copyOf(components, otherVector.getSize());
@@ -73,7 +71,6 @@ public class Vector {
         return this;
     }
 
-    // Пункт c
     public Vector makeScalarMultiplication(double scalar) {
         for (int i = 0; i < getSize(); ++i) {
             components[i] *= scalar;
@@ -82,16 +79,16 @@ public class Vector {
         return this;
     }
 
-    // Пункт d
     public Vector turnVector() {
         for (int i = 0; i < getSize(); ++i) {
-            components[i] *= -1;
+            if (components[i] != 0) {
+                components[i] *= -1;
+            }
         }
 
         return this;
     }
 
-    // Пункт e
     public double getLength() {
         double squareSum = 0;
         for (double component : components) {
@@ -101,20 +98,22 @@ public class Vector {
         return Math.sqrt(squareSum);
     }
 
-    // Пункт f
     public double getComponent(int index) {
+        if (index >= getSize()) {
+            return 0.0;
+        }
+
         return components[index];
     }
 
     public void setComponent(double component, int index) {
-        if (index >= getSize()){
+        if (index >= getSize()) {
             components = Arrays.copyOf(components, index + 1);
         }
 
         components[index] = component;
     }
 
-    // Пункт g
     @Override
     public boolean equals(Object object) {
         if (object == this) {
@@ -141,15 +140,14 @@ public class Vector {
     public static Vector makeVectorsAddition(Vector vector1, Vector vector2) throws IllegalAccessException {
         Vector vectorSum = new Vector(Math.max(vector1.getSize(), vector2.getSize()));
 
-        for (int i = 0; i < Math.max(vector1.getSize(), vector2.getSize()); ++i) {
-            if (i < vector1.getSize()) {
-                vectorSum.components[i] += vector1.components[i];
-            }
-
-            if (i < vector2.getSize()) {
-                vectorSum.components[i] += vector2.components[i];
-            }
+        for (int i = 0; i < vector1.getSize(); ++i) {
+            vectorSum.components[i] += vector1.components[i];
         }
+
+        for (int i = 0; i < vector2.getSize(); ++i) {
+            vectorSum.components[i] += vector2.components[i];
+        }
+
 
         return vectorSum;
     }
@@ -157,20 +155,18 @@ public class Vector {
     public static Vector makeVectorsSubtraction(Vector vector1, Vector vector2) throws IllegalAccessException {
         Vector vectorSubtraction = new Vector(Math.max(vector1.getSize(), vector2.getSize()));
 
-        for (int i = 0; i < Math.max(vector1.getSize(), vector2.getSize()); ++i) {
-            if (i < vector1.getSize()) {
-                vectorSubtraction.components[i] += vector1.components[i];
-            }
+        for (int i = 0; i < vector1.getSize(); ++i) {
+            vectorSubtraction.components[i] += vector1.components[i];
+        }
 
-            if (i < vector2.getSize()) {
-                vectorSubtraction.components[i] -= vector2.components[i];
-            }
+        for (int i = 0; i < vector2.getSize(); ++i) {
+            vectorSubtraction.components[i] -= vector2.components[i];
         }
 
         return vectorSubtraction;
     }
 
-    public static double makeScalarProduct(Vector vector1, Vector vector2) throws IllegalAccessException {
+    public static double makeScalarProduct(Vector vector1, Vector vector2) {
         double scalarProduct = 0;
 
         for (int i = 0; i < Math.min(vector1.getSize(), vector2.getSize()); ++i) {

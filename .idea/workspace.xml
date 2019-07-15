@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4d93276-0dc1-4cd3-9b36-854cf4dbedc5" name="Default" comment="Первый коммит">
-      <change afterPath="$PROJECT_DIR$/Vector/Vector.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vector/src/ru/tcivinskaya/main/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vector/src/ru/tcivinskaya/vector/Vector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/tcivinskaya/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/tcivinskaya/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/tcivinskaya/shapes/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/tcivinskaya/shapes/Circle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/tcivinskaya/shapes/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/tcivinskaya/shapes/Rectangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/tcivinskaya/shapes/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/tcivinskaya/shapes/Shape.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/tcivinskaya/shapes/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/tcivinskaya/shapes/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/tcivinskaya/shapes/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/tcivinskaya/shapes/Triangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vector/src/ru/tcivinskaya/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vector/src/ru/tcivinskaya/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vector/src/ru/tcivinskaya/vector/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vector/src/ru/tcivinskaya/vector/Vector.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,13 +16,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Shapes/src/ru/tcivinskaya/main/Main.java">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Vector/src/ru/tcivinskaya/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="433">
+              <caret line="49" selection-start-line="49" selection-end-line="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Vector.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Vector/src/ru/tcivinskaya/vector/Vector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="447">
+              <caret line="178" selection-start-line="178" selection-end-line="178" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#501#502#0" expanded="true" />
+                <element signature="e#579#580#0" expanded="true" />
+                <element signature="e#867#868#0" expanded="true" />
+                <element signature="e#900#901#0" expanded="true" />
+                <element signature="e#954#955#0" expanded="true" />
+                <element signature="e#998#999#0" expanded="true" />
+                <element signature="e#1026#1027#0" expanded="true" />
+                <element signature="e#1066#1067#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,33 +104,25 @@
             <path>
               <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
               <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Shapes" type="462c0819:PsiDirectoryNode" />
+              <item name="Vector" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
               <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Shapes" type="462c0819:PsiDirectoryNode" />
+              <item name="Vector" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
               <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Shapes" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="tcivinskaya" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Shapes" type="462c0819:PsiDirectoryNode" />
+              <item name="Vector" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="tcivinskaya" type="462c0819:PsiDirectoryNode" />
-              <item name="comparisons" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
               <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Shapes" type="462c0819:PsiDirectoryNode" />
+              <item name="Vector" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="tcivinskaya" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -130,10 +130,10 @@
             <path>
               <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
               <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Shapes" type="462c0819:PsiDirectoryNode" />
+              <item name="Vector" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="tcivinskaya" type="462c0819:PsiDirectoryNode" />
-              <item name="shapes" type="462c0819:PsiDirectoryNode" />
+              <item name="vector" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -160,7 +160,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main (1)">
+  <component name="RunManager" selected="Application.Main (2)">
     <configuration name="HelloWorld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.tcivinskaya.shape.HelloWorld" />
       <module name="Shapes" />
@@ -266,8 +266,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main (2)" />
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Range" />
         <item itemvalue="Application.HelloWorld" />
@@ -308,11 +308,11 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50073206" side_tool="true" weight="0.32857144" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49926794" weight="0.32857144" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49926794" visible="true" weight="0.32857144" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49926794" visible="true" weight="0.052380953" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24963397" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24963397" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -471,32 +471,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Vector/src/ru/tcivinskaya/vector/Vector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2475">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#415#416#0" expanded="true" />
-            <element signature="e#481#482#0" expanded="true" />
-            <element signature="e#785#786#0" expanded="true" />
-            <element signature="e#814#815#0" expanded="true" />
-            <element signature="e#860#861#0" expanded="true" />
-            <element signature="e#896#897#0" expanded="true" />
-            <element signature="e#924#925#0" expanded="true" />
-            <element signature="e#959#960#0" expanded="true" />
-            <element signature="e#2485#2486#0" expanded="true" />
-            <element signature="e#2520#2521#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Vector/src/ru/tcivinskaya/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Shapes/src/ru/tcivinskaya/comparisons/SortByAreaComparator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -556,10 +530,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Shapes/src/ru/tcivinskaya/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
+        <state relative-caret-position="310">
           <caret line="36" selection-start-line="36" selection-end-line="36" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vector/src/ru/tcivinskaya/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vector/src/ru/tcivinskaya/vector/Vector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="178" selection-start-line="178" selection-end-line="178" />
+          <folding>
+            <element signature="e#501#502#0" expanded="true" />
+            <element signature="e#579#580#0" expanded="true" />
+            <element signature="e#867#868#0" expanded="true" />
+            <element signature="e#900#901#0" expanded="true" />
+            <element signature="e#954#955#0" expanded="true" />
+            <element signature="e#998#999#0" expanded="true" />
+            <element signature="e#1026#1027#0" expanded="true" />
+            <element signature="e#1066#1067#0" expanded="true" />
           </folding>
         </state>
       </provider>
