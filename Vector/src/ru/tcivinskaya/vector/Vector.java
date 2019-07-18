@@ -96,7 +96,7 @@ public class Vector {
 
     public double getComponent(int index) {
         if (index >= getSize() || index < 0) {
-            throw new IllegalArgumentException("неверно введён индекс компоненты вектора");
+            throw new ArrayIndexOutOfBoundsException("неверно введён индекс компоненты вектора");
         }
 
         return components[index];
@@ -104,7 +104,7 @@ public class Vector {
 
     public void setComponent(int index, double component) {
         if (index >= getSize() || index < 0) {
-            throw new IllegalArgumentException("неверно введён индекс компоненты вектора");
+            throw new ArrayIndexOutOfBoundsException("неверно введён индекс компоненты вектора");
         }
 
         components[index] = component;
