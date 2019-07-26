@@ -156,3 +156,5 @@ public class Vector {
         return scalarProduct;
     }
 }
+
+
