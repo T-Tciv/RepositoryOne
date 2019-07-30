@@ -6,25 +6,26 @@ import ru.tcivinskaya.vector.Vector;
 public class Main {
     public static void main(String[] args) {
         Matrix matrix = new Matrix(2, 2);
-        Matrix matrix1 = new Matrix(new double[][]{{1, 2}, {3, 4}});
+        Matrix matrix1 = new Matrix(new double[][]{{0, 2}, {3, 4}});
+
         Matrix matrix2 = new Matrix(new Vector[]{new Vector(new double[]{5, 6}), new Vector(new double[]{7, 8})});
         Matrix matrix3 = new Matrix(matrix2);
 
         System.out.println("Получение размеров матрицы");
         System.out.println(matrix);
-        System.out.println(matrix.getLineCount());
-        System.out.println(matrix.getColumnCount());
+        System.out.println(matrix.getRowsCount());
+        System.out.println(matrix.getColumnsCount());
 
         //Задание вектора-строки матрицы
-        matrix.setVectorsLine(0, new Vector(new double[]{9, 10}));
+        matrix.setRow(0, new Vector(new double[]{9, 10}));
 
         System.out.println("Получение вектора-строки матрицы");
         System.out.println(matrix);
-        System.out.println(matrix.getVectorsLine(0));
+        System.out.println(matrix.getRow(0));
 
         System.out.println("Получение вектора-столбца матрицы");
         System.out.println(matrix);
-        System.out.println(matrix.getVectorsColumn(0));
+        System.out.println(matrix.getColumn(0));
 
         System.out.println("Транспонирование матрицы");
         matrix = new Matrix(matrix1);
@@ -34,7 +35,7 @@ public class Main {
         System.out.println("Умножение матрицы на скаляр");
         matrix = new Matrix(matrix1);
         System.out.println(matrix);
-        System.out.println(matrix.makeScalarMultiplication(2));
+        System.out.println(matrix.multiplyByScalar(-2));
 
         System.out.println("Получение определителя матрицы");
         matrix = new Matrix(new double[][]{{2, 1, 2}, {0, -1, 3}, {-6, 5, 4}});
@@ -51,13 +52,6 @@ public class Main {
         System.out.println(matrix);
         System.out.println(vectorColumn);
         System.out.println(matrix.makeVectorColumnMultiplication(vectorColumn));
-
-        System.out.println("Умножение матрицы на вектор-строку");
-        matrix = new Matrix(new double[][]{{1}, {2}, {3}});
-        Vector vectorLine = new Vector(new double[]{4, 5, 6});
-        System.out.println(matrix);
-        System.out.println(vectorLine);
-        System.out.println(matrix.makeVectorLineMultiplication(vectorLine));
 
         System.out.println("Сложение матриц (два метода)");
         matrix = new Matrix(new double[][]{{1, 2}, {3, 4}});

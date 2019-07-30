@@ -68,16 +68,22 @@ public class Vector {
     }
 
     public Vector makeScalarMultiplication(double scalar) {
+        double measurementError = 1.0e-10;
+
         for (int i = 0; i < getSize(); ++i) {
-            components[i] *= scalar;
+            if (Math.abs(components[i]) > measurementError) {
+                components[i] *= scalar;
+            }
         }
 
         return this;
     }
 
     public Vector turnVector() {
+        double measurementError = 1.0e-10;
+
         for (int i = 0; i < getSize(); ++i) {
-            if (components[i] != 0) {
+            if (Math.abs(components[i]) > measurementError) {
                 components[i] *= -1;
             }
         }
