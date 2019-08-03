@@ -39,9 +39,9 @@ public class Main {
         vector.setComponent(0, 2);
         System.out.printf("Длина вектора с компонентами %s = %f, размерность = %d%n", vector, vector.getLength(), vector.getSize());
         int scalar = 5;
-        System.out.printf("При умножении этого вектора на скаляр (%d) получается вектор с компонентами %s%n", scalar, vector.makeScalarMultiplication(scalar));
+        System.out.printf("При умножении этого вектора на скаляр (%d) получается вектор с компонентами %s%n", scalar, vector.multiplyByScalar(scalar));
         System.out.println("Развернём этот вектор");
-        vector.turnVector();
+        vector.turn();
         int index = 1;
         System.out.printf("Тогда его компонента с индексом %d будет равна %f%n", index, vector.getComponent(index));
     }

@@ -5,30 +5,30 @@ import ru.tcivinskaya.vector.Vector;
 import java.util.Arrays;
 
 public class Matrix {
-    private Vector[] matrixVectors;
+    private Vector[] rows;
 
-    public Matrix(int n, int m) {
-        if (n == 0 || m == 0) {
+    public Matrix(int columnsCount, int rowsCount) {
+        if (columnsCount == 0 || rowsCount == 0) {
             throw new IllegalArgumentException("вы пытаетесь создать пустую матрицу");
         }
 
-        matrixVectors = new Vector[m];
-        for (int i = 0; i < m; ++i) {
-            matrixVectors[i] = new Vector(n);
+        rows = new Vector[rowsCount];
+        for (int i = 0; i < rowsCount; ++i) {
+            rows[i] = new Vector(columnsCount);
         }
     }
 
     public Matrix(Matrix otherMatrix) {
         int otherMatrixLength = otherMatrix.getRowsCount();
-        this.matrixVectors = new Vector[otherMatrixLength];
+        this.rows = new Vector[otherMatrixLength];
 
         for (int i = 0; i < otherMatrixLength; ++i) {
-            this.matrixVectors[i] = new Vector(otherMatrix.matrixVectors[i]);
+            this.rows[i] = new Vector(otherMatrix.rows[i]);
         }
     }
 
     public Matrix(double[][] array) {
-        if (array.length == 0 || array[0].length == 0) {
+        if (array.length == 0) {
             throw new IllegalArgumentException("вы пытаетесь создать пустую матрицу");
         }
 
@@ -38,9 +38,13 @@ public class Matrix {
             maxRowLength = Math.max(maxRowLength, element.length);
         }
 
-        matrixVectors = new Vector[arrayLength];
+        if (maxRowLength == 0) {
+            throw new IllegalArgumentException("вы пытаетесь создать пустую матрицу");
+        }
+
+        rows = new Vector[arrayLength];
         for (int i = 0; i < arrayLength; ++i) {
-            this.matrixVectors[i] = new Vector(Arrays.copyOf(array[i], maxRowLength));
+            this.rows[i] = new Vector(Arrays.copyOf(array[i], maxRowLength));
         }
     }
 
@@ -54,18 +58,18 @@ public class Matrix {
             maxRowLength = Math.max(maxRowLength, vector.getSize());
         }
 
-        this.matrixVectors = new Vector[vectorsArrayLength];
+        this.rows = new Vector[vectorsArrayLength];
         for (int i = 0; i < vectorsArrayLength; ++i) {
-            this.matrixVectors[i] = new Vector(maxRowLength).add(vectors[i]);
+            this.rows[i] = new Vector(maxRowLength).add(vectors[i]);
         }
     }
 
     public int getRowsCount() {
-        return matrixVectors.length;
+        return rows.length;
     }
 
     public int getColumnsCount() {
-        return matrixVectors[0].getSize();
+        return rows[0].getSize();
     }
 
     public Vector getRow(int rowIndex) {
@@ -73,7 +77,7 @@ public class Matrix {
             throw new IndexOutOfBoundsException("неверно введён индекс вектора-строки матрицы");
         }
 
-        return new Vector(matrixVectors[rowIndex]);
+        return new Vector(rows[rowIndex]);
     }
 
     public void setRow(int rowIndex, Vector setVector) {
@@ -85,7 +89,7 @@ public class Matrix {
             throw new IllegalArgumentException("длина устанавливаемого вектора не соответствует размерам матрицы");
         }
 
-        this.matrixVectors[rowIndex] = new Vector(setVector);
+        this.rows[rowIndex] = new Vector(setVector);
     }
 
     public Vector getColumn(int columnIndex) {
@@ -98,7 +102,7 @@ public class Matrix {
 
         Vector columnVector = new Vector(vectorsArrayLength);
         for (int i = 0; i < vectorsArrayLength; ++i) {
-            columnVector.setComponent(i, matrixVectors[i].getComponent(columnIndex));
+            columnVector.setComponent(i, rows[i].getComponent(columnIndex));
         }
 
         return columnVector;
@@ -107,13 +111,13 @@ public class Matrix {
     public Matrix transpose() {
         int columnNumber = getColumnsCount();
 
-        Vector[] transposedMatrixVectors = new Vector[columnNumber];
+        Vector[] transposedMatrixRows = new Vector[columnNumber];
 
         for (int i = 0; i < columnNumber; ++i) {
-            transposedMatrixVectors[i] = getColumn(i);
+            transposedMatrixRows[i] = getColumn(i);
         }
 
-        matrixVectors = transposedMatrixVectors;
+        rows = transposedMatrixRows;
 
         return this;
     }
@@ -122,7 +126,7 @@ public class Matrix {
         int vectorsArrayLength = getRowsCount();
 
         for (int i = 0; i < vectorsArrayLength; ++i) {
-            setRow(i, getRow(i).makeScalarMultiplication(scalar));
+            rows[i].multiplyByScalar(scalar);
         }
 
         return this;
@@ -146,7 +150,7 @@ public class Matrix {
 
             for (int j = i; j < matrixSize; ++j) {
                 specialRowNumber = j;
-                specialElement = triangularMatrix.matrixVectors[j].getComponent(i);
+                specialElement = triangularMatrix.rows[j].getComponent(i);
 
                 if (Math.abs(specialElement) > measurementError) {
                     j = matrixSize;
@@ -154,22 +158,22 @@ public class Matrix {
             }
 
             if (Math.abs(specialElement) > measurementError) {
-                Vector newFirstRow = new Vector(triangularMatrix.matrixVectors[specialRowNumber]);
-                triangularMatrix.matrixVectors[specialRowNumber] = new Vector(triangularMatrix.matrixVectors[i]);
-                triangularMatrix.matrixVectors[i] = new Vector(newFirstRow);
+                Vector newFirstRow = new Vector(triangularMatrix.rows[specialRowNumber]);
+                triangularMatrix.rows[specialRowNumber] = new Vector(triangularMatrix.rows[i]);
+                triangularMatrix.rows[i] = new Vector(newFirstRow);
 
                 for (int j = i + 1; j < matrixSize; ++j) {
-                    double thisRowMultiplier = -triangularMatrix.matrixVectors[j].getComponent(i) / specialElement;
+                    double thisRowMultiplier = -triangularMatrix.rows[j].getComponent(i) / specialElement;
 
                     for (int e = i; e < matrixSize; ++e) {
-                        triangularMatrix.matrixVectors[j].setComponent(e, triangularMatrix.matrixVectors[j].getComponent(e) + triangularMatrix.matrixVectors[i].getComponent(e) * thisRowMultiplier);
+                        triangularMatrix.rows[j].setComponent(e, triangularMatrix.rows[j].getComponent(e) + triangularMatrix.rows[i].getComponent(e) * thisRowMultiplier);
                     }
                 }
             }
         }
 
         for (int i = 0; i < matrixSize; ++i) {
-            determinant *= triangularMatrix.matrixVectors[i].getComponent(i);
+            determinant *= triangularMatrix.rows[i].getComponent(i);
         }
 
         return determinant;
@@ -177,7 +181,7 @@ public class Matrix {
 
     @Override
     public String toString() {
-        String stringMatrix = Arrays.toString(matrixVectors);
+        String stringMatrix = Arrays.toString(rows);
         return "{ " + stringMatrix.substring(1, stringMatrix.length() - 1) + " }";
     }
 
@@ -195,7 +199,7 @@ public class Matrix {
             double componentSum = 0;
 
             for (int j = 0; j < columnsNumber; ++j) {
-                componentSum += matrixVectors[i].getComponent(j) * vectorColumn.getComponent(j);
+                componentSum += rows[i].getComponent(j) * vectorColumn.getComponent(j);
             }
 
             vectorSum.setComponent(i, componentSum);
@@ -213,7 +217,7 @@ public class Matrix {
         }
 
         for (int i = 0; i < rowsNumber; ++i) {
-            matrixVectors[i].add(otherMatrix.getRow(i));
+            rows[i].add(otherMatrix.rows[i]);
         }
 
         return this;
@@ -228,7 +232,7 @@ public class Matrix {
         }
 
         for (int i = 0; i < rowsNumber; ++i) {
-            matrixVectors[i].subtract(otherMatrix.getRow(i));
+            rows[i].subtract(otherMatrix.rows[i]);
         }
 
         return this;
@@ -264,17 +268,15 @@ public class Matrix {
         int commonNumber = matrix1.getColumnsCount();
 
         Matrix multiplicationMatrix = new Matrix(secondColumnsCount, firstRowsCount);
-        double componentSum;
-
         for (int i = 0; i < firstRowsCount; ++i) {
             for (int j = 0; j < secondColumnsCount; ++j) {
-                componentSum = 0;
+                double componentSum = 0;
 
-                for (int e = 0; e < commonNumber; ++e) {
-                    componentSum += matrix1.matrixVectors[i].getComponent(e) * matrix2.matrixVectors[e].getComponent(j);
+                for (int k = 0; k < commonNumber; ++k) {
+                    componentSum += matrix1.rows[i].getComponent(k) * matrix2.rows[k].getComponent(j);
                 }
 
-                multiplicationMatrix.matrixVectors[i].setComponent(j, componentSum);
+                multiplicationMatrix.rows[i].setComponent(j, componentSum);
             }
         }
 

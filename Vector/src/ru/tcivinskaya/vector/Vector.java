@@ -67,25 +67,17 @@ public class Vector {
         return this;
     }
 
-    public Vector makeScalarMultiplication(double scalar) {
-        double measurementError = 1.0e-10;
-
+    public Vector multiplyByScalar(double scalar) {
         for (int i = 0; i < getSize(); ++i) {
-            if (Math.abs(components[i]) > measurementError) {
-                components[i] *= scalar;
-            }
+            components[i] *= scalar;
         }
 
         return this;
     }
 
-    public Vector turnVector() {
-        double measurementError = 1.0e-10;
-
+    public Vector turn() {
         for (int i = 0; i < getSize(); ++i) {
-            if (Math.abs(components[i]) > measurementError) {
-                components[i] *= -1;
-            }
+            components[i] *= -1;
         }
 
         return this;
