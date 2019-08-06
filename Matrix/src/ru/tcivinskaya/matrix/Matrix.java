@@ -52,6 +52,7 @@ public class Matrix {
         if (vectors.length == 0) {
             throw new IllegalArgumentException("вы пытаетесь создать пустую матрицу");
         }
+
         int maxRowLength = 0;
         int vectorsArrayLength = vectors.length;
         for (Vector vector : vectors) {
@@ -93,15 +94,12 @@ public class Matrix {
     }
 
     public Vector getColumn(int columnIndex) {
-        int vectorsArrayLength = getRowsCount();
-        int columnsNumber = getColumnsCount();
-
-        if (vectorsArrayLength == 0 || columnIndex >= columnsNumber || columnIndex < 0) {
+        if (columnIndex >= getColumnsCount() || columnIndex < 0) {
             throw new IndexOutOfBoundsException("неверно введён индекс вектора-столбца матрицы");
         }
 
-        Vector columnVector = new Vector(vectorsArrayLength);
-        for (int i = 0; i < vectorsArrayLength; ++i) {
+        Vector columnVector = new Vector(getRowsCount());
+        for (int i = 0; i < getRowsCount(); ++i) {
             columnVector.setComponent(i, rows[i].getComponent(columnIndex));
         }
 
@@ -123,10 +121,8 @@ public class Matrix {
     }
 
     public Matrix multiplyByScalar(double scalar) {
-        int vectorsArrayLength = getRowsCount();
-
-        for (int i = 0; i < vectorsArrayLength; ++i) {
-            rows[i].multiplyByScalar(scalar);
+        for (Vector row : rows) {
+            row.multiplyByScalar(scalar);
         }
 
         return this;
@@ -186,16 +182,16 @@ public class Matrix {
     }
 
     public Vector makeVectorColumnMultiplication(Vector vectorColumn) {
-        int vectorsArrayLength = getRowsCount();
+        int rowsCount = getRowsCount();
         int columnsNumber = getColumnsCount();
 
         if (columnsNumber != vectorColumn.getSize()) {
             throw new IllegalArgumentException("при умножении матрицы на вектор-столбец, кол-во столбцов матрицы должно совпадать с кол-вом строк вектора");
         }
 
-        Vector vectorSum = new Vector(vectorsArrayLength);
+        Vector vectorSum = new Vector(rowsCount);
 
-        for (int i = 0; i < vectorsArrayLength; ++i) {
+        for (int i = 0; i < rowsCount; ++i) {
             double componentSum = 0;
 
             for (int j = 0; j < columnsNumber; ++j) {
