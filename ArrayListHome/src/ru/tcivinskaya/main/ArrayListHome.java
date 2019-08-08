@@ -7,11 +7,10 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class ArrayListHome {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         // Прочитать в список все строки из файла
-        ArrayList<String> lines = new ArrayList<>();
         String fileName = "input.txt";
-        System.out.println(fillWithLinesFromFile(fileName, lines));
+        System.out.println(fillWithLinesFromFile(fileName));
 
         //Удалить чётные числа из списка
         ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3));
@@ -22,24 +21,29 @@ public class ArrayListHome {
         System.out.println(getListWithoutRepetitions(numbers));
     }
 
-    private static ArrayList<String> fillWithLinesFromFile(String fileName, ArrayList<String> lines) throws IOException {
+    private static ArrayList<String> fillWithLinesFromFile(String fileName) {
+        ArrayList<String> lines = new ArrayList<>();
+
         try (Scanner scanner = new Scanner(new FileInputStream(fileName))) {
             while (scanner.hasNextLine()) {
                 lines.add(scanner.nextLine());
             }
+        } catch (IOException e) {
+            System.out.println("Возникла ошибка при чтении из файла: ");
+            e.printStackTrace();
         }
 
         return lines;
     }
 
     private static ArrayList<Integer> deleteEvenNumbers(ArrayList<Integer> numbers) {
-        int elementNumber = 0;
+        int i = 0;
 
-        while (elementNumber < numbers.size()) {
-            if (numbers.get(elementNumber) != null && numbers.get(elementNumber) % 2 == 0) {
-                numbers.remove(elementNumber);
+        while (i < numbers.size()) {
+            if (numbers.get(i) != null && numbers.get(i) % 2 == 0) {
+                numbers.remove(i);
             } else {
-                elementNumber += 1;
+                ++i;
             }
         }
 
@@ -49,9 +53,9 @@ public class ArrayListHome {
     private static ArrayList<Integer> getListWithoutRepetitions(ArrayList<Integer> numbers) {
         ArrayList<Integer> uniqueNumbers = new ArrayList<>();
 
-        for (int i = 0; i < numbers.size(); ++i) {
-            if (numbers.get(i) != null && numbers.indexOf(numbers.get(i)) == i) {
-                uniqueNumbers.add(numbers.get(i));
+        for (Integer number : numbers) {
+            if (number != null && !(uniqueNumbers.contains(number))) {
+                uniqueNumbers.add(number);
             }
         }
 

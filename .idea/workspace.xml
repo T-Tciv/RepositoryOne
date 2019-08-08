@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4d93276-0dc1-4cd3-9b36-854cf4dbedc5" name="Default" comment="Первый коммит">
-      <change beforePath="$PROJECT_DIR$/Matrix/src/ru/tcivinskaya/matrix/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix/src/ru/tcivinskaya/matrix/Matrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArrayListHome/src/ru/tcivinskaya/main/ArrayListHome.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayListHome/src/ru/tcivinskaya/main/ArrayListHome.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,23 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Matrix.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Matrix/src/ru/tcivinskaya/matrix/Matrix.java">
+      <file leaf-file-name="ArrayListHome.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ArrayListHome/src/ru/tcivinskaya/main/ArrayListHome.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Matrix/src/ru/tcivinskaya/main/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-833">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state relative-caret-position="478">
+              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,12 +64,12 @@
         <option value="$PROJECT_DIR$/Vector/src/ru/tcivinskaya/vector/Vector.java" />
         <option value="$PROJECT_DIR$/Matrix/src/ru/tcivinskaya/main/Main.java" />
         <option value="$PROJECT_DIR$/ArrayListHome/src/ru/tcivinskaya/main/ListFillingFromFile.java" />
-        <option value="$PROJECT_DIR$/ArrayListHome/src/ru/tcivinskaya/main/ArrayListHome.java" />
         <option value="$PROJECT_DIR$/Matrix/src/ru/tcivinskaya/matrix/Matrix.java" />
+        <option value="$PROJECT_DIR$/ArrayListHome/src/ru/tcivinskaya/main/ArrayListHome.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="5" />
     <option name="y" value="32" />
     <option name="width" value="1346" />
@@ -101,62 +90,20 @@
             <path>
               <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
               <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Matrix" type="462c0819:PsiDirectoryNode" />
+              <item name="ArrayListHome" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
               <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Matrix" type="462c0819:PsiDirectoryNode" />
+              <item name="ArrayListHome" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
               <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Matrix" type="462c0819:PsiDirectoryNode" />
+              <item name="ArrayListHome" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="tcivinskaya" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Matrix" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="tcivinskaya" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Matrix" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="tcivinskaya" type="462c0819:PsiDirectoryNode" />
-              <item name="matrix" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Vector" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Vector" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Vector" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="tcivinskaya" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="Vector" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="tcivinskaya" type="462c0819:PsiDirectoryNode" />
-              <item name="vector" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -185,7 +132,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main (3)">
+  <component name="RunManager" selected="Application.ArrayListHome">
     <configuration name="ArrayListHome" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.tcivinskaya.main.ArrayListHome" />
       <module name="ArrayListHome" />
@@ -291,8 +238,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main (3)" />
         <item itemvalue="Application.ArrayListHome" />
+        <item itemvalue="Application.Main (3)" />
         <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
@@ -321,7 +268,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -332,8 +279,8 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50073206" side_tool="true" weight="0.32857144" />
       <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49926794" weight="0.07777778" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49926794" visible="true" weight="0.08730159" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" sideWeight="0.49926794" visible="true" weight="0.0031746032" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49926794" weight="0.08095238" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
@@ -590,27 +537,6 @@
     <entry file="file://$PROJECT_DIR$/input.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Vector/src/ru/tcivinskaya/vector/Vector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
-          <folding>
-            <element signature="e#939#940#0" expanded="true" />
-            <element signature="e#979#980#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ArrayListHome/src/ru/tcivinskaya/main/ArrayListHome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Matrix/src/ru/tcivinskaya/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-833">
@@ -623,8 +549,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Matrix/src/ru/tcivinskaya/matrix/Matrix.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="-1617">
+          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2044#2045#0" expanded="true" />
+            <element signature="e#2078#2079#0" expanded="true" />
+            <element signature="e#2114#2115#0" expanded="true" />
+            <element signature="e#2154#2155#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vector/src/ru/tcivinskaya/vector/Vector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+          <folding>
+            <element signature="e#939#940#0" expanded="true" />
+            <element signature="e#979#980#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ArrayListHome/src/ru/tcivinskaya/main/ArrayListHome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
