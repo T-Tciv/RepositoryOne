@@ -1,6 +1,7 @@
 package ru.tcivinskaya.main;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,10 +15,11 @@ public class ArrayListHome {
 
         //Удалить чётные числа из списка
         ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3));
-        System.out.println(deleteEvenNumbers(numbers));
+        deleteEvenNumbers(numbers);
+        System.out.println(numbers);
 
         //Создать список без повторяющийся элементов
-        numbers = new ArrayList<>(Arrays.asList(1, 2, 2, 3, 4, 3));
+        numbers = new ArrayList<>(Arrays.asList(1, 2, 2, 3, 4, 3, null));
         System.out.println(getListWithoutRepetitions(numbers));
     }
 
@@ -28,15 +30,16 @@ public class ArrayListHome {
             while (scanner.hasNextLine()) {
                 lines.add(scanner.nextLine());
             }
+        } catch (FileNotFoundException e) {
+            System.out.println("Не удается найти указанный файл: " + fileName);
         } catch (IOException e) {
-            System.out.println("Возникла ошибка при чтении из файла: ");
-            e.printStackTrace();
+            System.out.println("Возникла ошибка при чтении из файла: " + e.getMessage());
         }
 
         return lines;
     }
 
-    private static ArrayList<Integer> deleteEvenNumbers(ArrayList<Integer> numbers) {
+    private static void deleteEvenNumbers(ArrayList<Integer> numbers) {
         int i = 0;
 
         while (i < numbers.size()) {
@@ -46,15 +49,13 @@ public class ArrayListHome {
                 ++i;
             }
         }
-
-        return numbers;
     }
 
     private static ArrayList<Integer> getListWithoutRepetitions(ArrayList<Integer> numbers) {
         ArrayList<Integer> uniqueNumbers = new ArrayList<>();
 
         for (Integer number : numbers) {
-            if (number != null && !(uniqueNumbers.contains(number))) {
+            if (!uniqueNumbers.contains(number)) {
                 uniqueNumbers.add(number);
             }
         }
