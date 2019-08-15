@@ -8,7 +8,7 @@ public class SinglyLinkedList<T> {
         return count;
     }
 
-    public T getFirstItem() {
+    public T getFirstItemData() {
         if (count == 0) {
             throw new IndexOutOfBoundsException("вы пытаетесь получить данные несуществующего первого элемента");
         }
@@ -17,7 +17,7 @@ public class SinglyLinkedList<T> {
     }
 
     public T getData(int index) {
-        if (index >= count) {
+        if (index >= count || index < 0) {
             throw new IndexOutOfBoundsException("вы пытаетесь получить данные несуществующего элемента");
         }
 
@@ -31,7 +31,7 @@ public class SinglyLinkedList<T> {
     }
 
     public T setData(int index, T data) {
-        if (index >= count) {
+        if (index >= count || index < 0) {
             throw new IndexOutOfBoundsException("вы пытаетесь изменить данные несуществующего элемента");
         }
 
@@ -48,8 +48,12 @@ public class SinglyLinkedList<T> {
     }
 
     public T deleteItem(int index) {
-        if (index >= count) {
+        if (index >= count || index < 0) {
             throw new IndexOutOfBoundsException("вы пытаетесь удалить несуществующий элемент");
+        }
+
+        if (index == 0) {
+            return deleteFirstItem();
         }
 
         ListItem<T> p = head;
@@ -58,15 +62,9 @@ public class SinglyLinkedList<T> {
             p = p.getNext();
         }
 
-        T deletedData = p.getData();
-
-        if (p == head) {
-            head = head.getNext();
-        } else {
-            p.setNext(p.getNext().getNext());
-        }
-
-        --count; //TODO: проверить метод получение длины списка
+        T deletedData = p.getNext().getData();
+        p.setNext(p.getNext().getNext());
+        --count;
 
         return deletedData;
     }
@@ -77,16 +75,24 @@ public class SinglyLinkedList<T> {
     }
 
     public void setItem(int index, T data) {
+        if (index < 0) {
+            throw new IndexOutOfBoundsException("у устанавливаемого элемента не может быть отрицательный индекс");
+        }
+
         if (index == 0) {
             setFirstItem(data);
             return;
         }
 
+        if (count == 0) {
+            setFirstItem(null);
+        }
+
         ListItem<T> p = head;
 
         for (int i = 0; i < index - 1; ++i) {
-            if (p.getNext() == null) { //TODO: разобраться с условием (можно через i > count ???)
-                p.setNext(new ListItem<T>(null));
+            if (p.getNext() == null) {
+                p.setNext(new ListItem<>(null));
                 ++count;
             }
 
@@ -97,15 +103,20 @@ public class SinglyLinkedList<T> {
         ++count;
     }
 
-    public boolean deleteItemByValue(T data) {
+    public boolean deleteItemWithValue(T data) {
+        if (count == 0) {
+            return false;
+        }
+
         if (head.getData().equals(data)) {
             head = head.getNext();
+            --count;
             return true;
         }
 
-        for (ListItem<T> p = head; p.getNext() != null; p = p.getNext()) {
-            if (p.getNext().getData().equals(data)) {
-                p.setNext(p.getNext().getNext());
+        for (ListItem<T> p = head.getNext(), prev = head; p != null; prev = p, p = p.getNext()) {
+            if (p.getData().equals(data)) {
+                prev.setNext(p.getNext());
                 --count;
                 return true;
             }
@@ -120,7 +131,8 @@ public class SinglyLinkedList<T> {
         }
 
         T deletedData = head.getData();
-        head = head.getNext(); //TODO: проверить, везде ли в нужных местах я писала так
+        head = head.getNext();
+        --count;
 
         return deletedData;
     }
@@ -130,28 +142,31 @@ public class SinglyLinkedList<T> {
             return;
         }
 
-        ListItem<T> prev = null;
+        ListItem<T> previous = null;
         ListItem<T> p = head;
         ListItem<T> next = head.getNext();
 
         while (next != null) {
-            p.setNext(prev);
-            prev = p;
+            p.setNext(previous);
+            previous = p;
             p = next;
             next = next.getNext();
         }
 
-        p.setNext(prev);
+        p.setNext(previous);
         head = p;
     }
 
-    public SinglyLinkedList<T> copy(SinglyLinkedList<T> otherList) {
+    public void copy(SinglyLinkedList<T> otherList) {
         int i = 0;
 
-        for (ListItem<T> p = head; p != null; p = p.getNext()) {
-            otherList.setItem(i, p.getData());
+        for (ListItem<T> p = otherList.head; p != null; p = p.getNext()) {
+            setItem(i, p.getData());
+            ++i;
         }
+    }
 
-        return otherList;
+    public void add(T data) {
+        setItem(count, data);
     }
 }
