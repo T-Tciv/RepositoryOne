@@ -7,10 +7,11 @@ public class Main {
         SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
 
         System.out.println("Вставка элемента по индексу:");
-        list.setItem(0, 0);
-        list.setItem(1, 12);
-        list.setItem(2, 2);
-        list.setItem(3, 3);
+        list.insert(0, 0);
+        list.insert(1, 12);
+        list.insert(2, 2);
+        list.insert(3, 3);
+        list.insert(4, null);
 
         for (int i = 0; i < list.getSize(); ++i) {
             System.out.println(list.getData(i));
@@ -49,14 +50,14 @@ public class Main {
         System.out.println();
 
         System.out.println("Удаление элемента по индексу:");
-        System.out.println(list.deleteItem(0));
+        System.out.println(list.deleteItem(1));
         System.out.println();
         for (int i = 0; i < list.getSize(); ++i) {
             System.out.println(list.getData(i));
         }
 
         System.out.println("Удаление элемента по значению:");
-        System.out.println(list.deleteItemWithValue(5));
+        System.out.println(list.deleteItemWithValue(null));
         System.out.println();
         for (int i = 0; i < list.getSize(); ++i) {
             System.out.println(list.getData(i));
@@ -70,8 +71,8 @@ public class Main {
         }
 
         System.out.println("Копирование списка:");
-        SinglyLinkedList<Integer> list1 = new SinglyLinkedList<>();
-        list1.copy(list);
+        SinglyLinkedList<Integer> list1 = list.copy();
+
         for (int i = 0; i < list1.getSize(); ++i) {
             System.out.println(list1.getData(i));
         }

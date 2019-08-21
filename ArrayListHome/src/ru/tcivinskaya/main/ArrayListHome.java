@@ -32,7 +32,7 @@ public class ArrayListHome {
             }
         } catch (FileNotFoundException e) {
             System.out.println("Не удается найти указанный файл: " + fileName);
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("Возникла ошибка при чтении из файла: " + e.getMessage());
         }
 
