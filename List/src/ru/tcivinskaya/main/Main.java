@@ -12,6 +12,7 @@ public class Main {
         list.insert(2, 2);
         list.insert(3, 3);
         list.insert(4, null);
+        list.insert(5, 1);
 
         for (int i = 0; i < list.getSize(); ++i) {
             System.out.println(list.getData(i));
@@ -57,7 +58,7 @@ public class Main {
         }
 
         System.out.println("Удаление элемента по значению:");
-        System.out.println(list.deleteItemWithValue(null));
+        System.out.println(list.deleteItemWithValue(5));
         System.out.println();
         for (int i = 0; i < list.getSize(); ++i) {
             System.out.println(list.getData(i));

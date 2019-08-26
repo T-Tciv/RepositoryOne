@@ -1,6 +1,7 @@
 package ru.tcivinskaya.list;
 
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class SinglyLinkedList<T> {
     private ListItem<T> head;
@@ -11,10 +12,6 @@ public class SinglyLinkedList<T> {
     }
 
     private ListItem<T> getItem(int index) {
-        if (index >= count || index < 0) {
-            throw new IndexOutOfBoundsException("вы пытаетесь получить несуществующий элемента");
-        }
-
         ListItem<T> p = head;
 
         for (int i = 0; i < index; ++i) {
@@ -77,8 +74,8 @@ public class SinglyLinkedList<T> {
     }
 
     public void insert(int index, T data) {
-        if (index < 0) {
-            throw new IndexOutOfBoundsException("у устанавливаемого элемента не может быть отрицательный индекс");
+        if (index < 0 || index > count) {
+            throw new IndexOutOfBoundsException("ошибка при введении индекса устанавливаемого элемента");
         }
 
         if (index == 0) {
@@ -86,20 +83,7 @@ public class SinglyLinkedList<T> {
             return;
         }
 
-        if (count == 0) {
-            setFirstItem(null);
-        }
-
-        ListItem<T> p = head;
-
-        for (int i = 0; i < index - 1; ++i) {
-            if (p.getNext() == null) {
-                p.setNext(new ListItem<>(null));
-                ++count;
-            }
-
-            p = p.getNext();
-        }
+        ListItem<T> p = getItem(index - 1);
 
         p.setNext(new ListItem<>(data, p.getNext()));
         ++count;
@@ -110,20 +94,14 @@ public class SinglyLinkedList<T> {
             return false;
         }
 
-        if (head.getData() != null && head.getData().equals(data) || head.getData() == null && data == null) {
+        if (Objects.equals(head.getData(), data)) {
             head = head.getNext();
             --count;
             return true;
         }
 
         for (ListItem<T> p = head.getNext(), prev = head; p != null; prev = p, p = p.getNext()) {
-            if (p.getData() == null) {
-                if (data == null) {
-                    prev.setNext(p.getNext());
-                    --count;
-                    return true;
-                }
-            } else if (p.getData().equals(data)) {
+            if (Objects.equals(p.getData(), data)) {
                 prev.setNext(p.getNext());
                 --count;
                 return true;
@@ -172,18 +150,16 @@ public class SinglyLinkedList<T> {
             return newList;
         }
 
-        newList.head = new ListItem<>(null);
+        newList.head = new ListItem<>(head.getData());
         ListItem<T> newListItem = newList.head;
         ListItem<T> thisListItem = head;
 
-        for (; thisListItem.getNext() != null; thisListItem = thisListItem.getNext()) {
-            newListItem.setData(thisListItem.getData());
-            newListItem.setNext(new ListItem<>(null));
-            newListItem = newListItem.getNext();
+        for (; thisListItem.getNext() != null; thisListItem = thisListItem.getNext(), newListItem = newListItem.getNext()) {
+            newListItem.setNext(new ListItem<>(thisListItem.getNext().getData()));
         }
 
-        newListItem.setData(thisListItem.getData());
         newList.count = count;
+
         return newList;
     }
 
