@@ -14,15 +14,13 @@ public class Main {
         list.insert(4, null);
         list.insert(5, 1);
 
-        for (int i = 0; i < list.getSize(); ++i) {
-            System.out.println(list.getData(i));
-        }
+        System.out.println(list);
 
         System.out.println("Получение длины списка:");
         System.out.println(list.getSize());
 
         System.out.println("Вставка элемента в начало и получение значения первого элемента:");
-        list.setFirstItem(5);
+        list.addFirst(5);
         System.out.println(list.getFirstItemData());
 
         System.out.println("Получение значения элемента по индексу:");
@@ -36,46 +34,28 @@ public class Main {
         System.out.println("     Разворот списка");
         System.out.println();
         System.out.println("Первоначальный список:");
-
-        for (int i = 0; i < list.getSize(); ++i) {
-            System.out.println(list.getData(i));
-        }
+        System.out.println(list);
 
         System.out.println("Развёрнутый список:");
         list.turn();
-
-        for (int i = 0; i < list.getSize(); ++i) {
-            System.out.println(list.getData(i));
-        }
+        System.out.println(list);
 
         System.out.println();
 
         System.out.println("Удаление элемента по индексу:");
         System.out.println(list.deleteItem(1));
-        System.out.println();
-        for (int i = 0; i < list.getSize(); ++i) {
-            System.out.println(list.getData(i));
-        }
+        System.out.println(list);
 
         System.out.println("Удаление элемента по значению:");
         System.out.println(list.deleteItemWithValue(5));
-        System.out.println();
-        for (int i = 0; i < list.getSize(); ++i) {
-            System.out.println(list.getData(i));
-        }
+        System.out.println(list);
 
         System.out.println("Удаление первого элемента:");
         System.out.println(list.deleteFirstItem());
-        System.out.println();
-        for (int i = 0; i < list.getSize(); ++i) {
-            System.out.println(list.getData(i));
-        }
+        System.out.println(list);
 
         System.out.println("Копирование списка:");
         SinglyLinkedList<Integer> list1 = list.copy();
-
-        for (int i = 0; i < list1.getSize(); ++i) {
-            System.out.println(list1.getData(i));
-        }
+        System.out.println(list1);
     }
 }

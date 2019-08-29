@@ -30,17 +30,13 @@ public class SinglyLinkedList<T> {
     }
 
     public T getData(int index) {
-        if (index >= count || index < 0) {
-            throw new IndexOutOfBoundsException("вы пытаетесь получить данные несуществующего элемента");
-        }
+        checkIndex(index, "вы пытаетесь получить данные несуществующего элемента");
 
         return getItem(index).getData();
     }
 
     public T setData(int index, T data) {
-        if (index >= count || index < 0) {
-            throw new IndexOutOfBoundsException("вы пытаетесь изменить данные несуществующего элемента");
-        }
+        checkIndex(index, "вы пытаетесь изменить данные несуществующего элемента");
 
         ListItem<T> p = getItem(index);
 
@@ -51,9 +47,7 @@ public class SinglyLinkedList<T> {
     }
 
     public T deleteItem(int index) {
-        if (index >= count || index < 0) {
-            throw new IndexOutOfBoundsException("вы пытаетесь удалить несуществующий элемент");
-        }
+        checkIndex(index, "вы пытаетесь удалить несуществующий элемент");
 
         if (index == 0) {
             return deleteFirstItem();
@@ -68,7 +62,7 @@ public class SinglyLinkedList<T> {
         return deletedData;
     }
 
-    public void setFirstItem(T data) {
+    public void addFirst(T data) {
         head = new ListItem<>(data, head);
         ++count;
     }
@@ -79,7 +73,7 @@ public class SinglyLinkedList<T> {
         }
 
         if (index == 0) {
-            setFirstItem(data);
+            addFirst(data);
             return;
         }
 
@@ -165,5 +159,31 @@ public class SinglyLinkedList<T> {
 
     public void add(T data) {
         insert(count, data);
+    }
+
+    @Override
+    public String toString() {
+        if (count == 0) {
+            return "[]";
+        }
+
+        StringBuilder lineList = new StringBuilder().append("[");
+
+        ListItem<T> p = head;
+
+        for (int i = 0; i < count - 1; ++i) {
+            lineList.append(p.getData()).append(", ");
+            p = p.getNext();
+        }
+
+        lineList.append(p.getData()).append("]");
+
+        return lineList.toString();
+    }
+
+    private void checkIndex(int index, String errorMessage) {
+        if (index >= count || index < 0) {
+            throw new IndexOutOfBoundsException(errorMessage);
+        }
     }
 }

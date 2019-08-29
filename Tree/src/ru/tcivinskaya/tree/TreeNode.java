@@ -1,6 +1,6 @@
 package ru.tcivinskaya.tree;
 
-class TreeNode<T extends Comparable<T>> {
+class TreeNode<T> {
     private TreeNode<T> left;
     private TreeNode<T> right;
     private T data;
