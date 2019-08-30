@@ -40,18 +40,14 @@ public class ArrayList<E> implements List<E> {
 
     @Override
     public E get(int index) {
-        if (index < 0 || index >= listLength) {
-            throw new IndexOutOfBoundsException("вы пытаетесь получить данные несуществующего элемента");
-        }
+        checkIndex(index, "вы пытаетесь получить данные несуществующего элемента");
 
         return items[index];
     }
 
     @Override
     public E set(int index, E element) {
-        if (index < 0 || index >= listLength) {
-            throw new IndexOutOfBoundsException("вы пытаетесь изменить данные несуществующего элемента");
-        }
+        checkIndex(index, "вы пытаетесь изменить данные несуществующего элемента");
 
         E oldData = items[index];
         items[index] = element;
@@ -98,9 +94,7 @@ public class ArrayList<E> implements List<E> {
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        if (c == null) {
-            throw new IllegalArgumentException("вы пытаетесь добавить в список коллекцию-null");
-        }
+        excludeNullCollection(c, "вы пытаетесь добавить в список коллекцию-null");
 
         ensureCapacity(listLength + c.size());
 
@@ -119,9 +113,7 @@ public class ArrayList<E> implements List<E> {
             throw new IndexOutOfBoundsException("ошибка при введении индекса, по которому добавляется коллекция");
         }
 
-        if (c == null) {
-            throw new IllegalArgumentException("вы пытаетесь добавить в список коллекцию-null");
-        }
+        excludeNullCollection(c, "вы пытаетесь добавить в список коллекцию-null");
 
         ensureCapacity(listLength + c.size());
 
@@ -144,9 +136,8 @@ public class ArrayList<E> implements List<E> {
         if (listLength != 0) {
             //noinspection unchecked
             items = (E[]) new Object[10];
+            modCount += listLength;
             listLength = 0;
-
-            ++modCount;
         }
     }
 
@@ -157,9 +148,7 @@ public class ArrayList<E> implements List<E> {
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        if (c == null) {
-            throw new IllegalArgumentException("вы пытаетесь найти в списке элементы коллекции-null");
-        }
+        excludeNullCollection(c, "вы пытаетесь найти в списке элементы коллекции-null");
 
         int containedItemsNumber = 0;
         int collectionSize = c.size();
@@ -198,6 +187,7 @@ public class ArrayList<E> implements List<E> {
         int hash = 1;
         hash = prime * hash + Arrays.hashCode(Arrays.copyOf(items, listLength));
         hash = prime * hash + listLength;
+
         return hash;
     }
 
@@ -260,6 +250,7 @@ public class ArrayList<E> implements List<E> {
             }
 
             ++currentIndex;
+
             return items[currentIndex];
         }
     }
@@ -284,9 +275,7 @@ public class ArrayList<E> implements List<E> {
 
     @Override
     public E remove(int index) {
-        if (index < 0 || index >= listLength) {
-            throw new IndexOutOfBoundsException("вы пытаетесь удалить несуществующий элемент");
-        }
+        checkIndex(index, "вы пытаетесь удалить несуществующий элемент");
 
         E oldData = items[index];
 
@@ -302,9 +291,9 @@ public class ArrayList<E> implements List<E> {
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        if (c == null) {
-            throw new IllegalArgumentException("вы пытаетесь удалить из списка элементы коллекции-null");
-        }
+        excludeNullCollection(c, "вы пытаетесь удалить из списка элементы коллекции-null");
+
+        int currentModCount = modCount;
 
         for (Object element : c) {
             boolean isContains = true;
@@ -314,15 +303,14 @@ public class ArrayList<E> implements List<E> {
             }
         }
 
-        return true;
+        return currentModCount != modCount;
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        if (c == null) {
-            throw new IllegalArgumentException("вы пытаетесь удалить из списка элементы, не содержащися в коллекции-null");
-        }
+        excludeNullCollection(c, "вы пытаетесь удалить из списка элементы, не содержащися в коллекции-null");
 
+        int currentModCount = modCount;
         int i = 0;
         while (i != listLength) {
             if (!c.contains(items[i])) {
@@ -332,7 +320,7 @@ public class ArrayList<E> implements List<E> {
             }
         }
 
-        return true;
+        return currentModCount != modCount;
     }
 
     @Override
@@ -348,6 +336,7 @@ public class ArrayList<E> implements List<E> {
 
         //noinspection SuspiciousSystemArraycopy
         System.arraycopy(items, 0, a, 0, listLength);
+
         return a;
     }
 
@@ -365,6 +354,18 @@ public class ArrayList<E> implements List<E> {
     public void trimToSize() {
         if (items.length > listLength) {
             items = Arrays.copyOf(items, listLength);
+        }
+    }
+
+    private void excludeNullCollection(Collection<?> c, String errorMessage) {
+        if (c == null) {
+            throw new IllegalArgumentException(errorMessage);
+        }
+    }
+
+    private void checkIndex(int index, String errorMessage) {
+        if (index < 0 || index >= listLength) {
+            throw new IndexOutOfBoundsException(errorMessage);
         }
     }
 

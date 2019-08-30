@@ -83,6 +83,5 @@ public class Main {
         System.out.println("Удаление всех элементов списка:");
         lines.clear();
         System.out.println(lines);
-/* */
     }
 }

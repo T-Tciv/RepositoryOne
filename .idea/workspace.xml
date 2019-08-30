@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4d93276-0dc1-4cd3-9b36-854cf4dbedc5" name="Default" comment="Первый коммит">
-      <change afterPath="$PROJECT_DIR$/Tree/src/ru/tcivinskaya/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArrayList/src/ru/tcivinskaya/list/ArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayList/src/ru/tcivinskaya/list/ArrayList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArrayList/src/ru/tcivinskaya/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayList/src/ru/tcivinskaya/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/List/src/ru/tcivinskaya/list/SinglyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/List/src/ru/tcivinskaya/list/SinglyLinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/List/src/ru/tcivinskaya/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/List/src/ru/tcivinskaya/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tree/src/ru/tcivinskaya/tree/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tree/src/ru/tcivinskaya/tree/Tree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tree/src/ru/tcivinskaya/tree/TreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tree/src/ru/tcivinskaya/tree/TreeNode.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,27 +16,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SinglyLinkedList.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/List/src/ru/tcivinskaya/list/SinglyLinkedList.java">
+      <file leaf-file-name="ArrayList.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ArrayList/src/ru/tcivinskaya/list/ArrayList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="189" selection-start-line="189" selection-end-line="189" />
+            <state relative-caret-position="-2635">
+              <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#212#213#0" expanded="true" />
-                <element signature="e#240#241#0" expanded="true" />
-                <element signature="e#4073#4074#0" expanded="true" />
-                <element signature="e#4108#4109#0" expanded="true" />
+                <element signature="e#2197#2198#0" expanded="true" />
+                <element signature="e#2259#2260#0" expanded="true" />
+                <element signature="e#3678#3679#0" expanded="true" />
+                <element signature="e#3717#3718#0" expanded="true" />
+                <element signature="e#8668#8669#0" expanded="true" />
+                <element signature="e#8723#8724#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/List/src/ru/tcivinskaya/main/Main.java">
+        <entry file="file://$PROJECT_DIR$/ArrayList/src/ru/tcivinskaya/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+            <state relative-caret-position="153">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,14 +89,14 @@
         <option value="$PROJECT_DIR$/Tree/src/ru/tcivinskaya/tree/TreeNode.java" />
         <option value="$PROJECT_DIR$/Tree/src/ru/tcivinskaya/main/Main.java" />
         <option value="$PROJECT_DIR$/Tree/src/ru/tcivinskaya/tree/Tree.java" />
-        <option value="$PROJECT_DIR$/ArrayList/src/ru/tcivinskaya/main/Main.java" />
-        <option value="$PROJECT_DIR$/ArrayList/src/ru/tcivinskaya/list/ArrayList.java" />
         <option value="$PROJECT_DIR$/List/src/ru/tcivinskaya/main/Main.java" />
         <option value="$PROJECT_DIR$/List/src/ru/tcivinskaya/list/SinglyLinkedList.java" />
+        <option value="$PROJECT_DIR$/ArrayList/src/ru/tcivinskaya/main/Main.java" />
+        <option value="$PROJECT_DIR$/ArrayList/src/ru/tcivinskaya/list/ArrayList.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="5" />
     <option name="y" value="32" />
     <option name="width" value="1346" />
@@ -118,25 +117,25 @@
             <path>
               <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
               <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="List" type="462c0819:PsiDirectoryNode" />
+              <item name="ArrayList" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
               <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="List" type="462c0819:PsiDirectoryNode" />
+              <item name="ArrayList" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
               <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="List" type="462c0819:PsiDirectoryNode" />
+              <item name="ArrayList" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="tcivinskaya" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
               <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="List" type="462c0819:PsiDirectoryNode" />
+              <item name="ArrayList" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="tcivinskaya" type="462c0819:PsiDirectoryNode" />
               <item name="list" type="462c0819:PsiDirectoryNode" />
@@ -144,7 +143,7 @@
             <path>
               <item name="RepositoryOne" type="b2602c69:ProjectViewProjectNode" />
               <item name="RepositoryOne" type="462c0819:PsiDirectoryNode" />
-              <item name="List" type="462c0819:PsiDirectoryNode" />
+              <item name="ArrayList" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="tcivinskaya" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -176,7 +175,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main (1)">
+  <component name="RunManager" selected="Application.Main (2)">
     <configuration name="ArrayListHome" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.tcivinskaya.main.ArrayListHome" />
       <module name="ArrayListHome" />
@@ -315,8 +314,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main (2)" />
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main (3)" />
         <item itemvalue="Application.ArrayListHome" />
         <item itemvalue="Application.Main (3)" />
@@ -345,7 +344,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -357,7 +356,7 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50073206" side_tool="true" weight="0.32857144" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49926794" weight="0.0031746032" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49926794" visible="true" weight="0.13015874" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49926794" visible="true" weight="0.0984127" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
@@ -421,7 +420,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="49" />
+      <option name="time" value="50" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -725,42 +724,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ArrayList/src/ru/tcivinskaya/list/ArrayList.java">
+    <entry file="file://$PROJECT_DIR$/List/src/ru/tcivinskaya/list/SinglyLinkedList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="342" selection-start-line="342" selection-end-line="342" />
-          <folding>
-            <element signature="e#736#737#0" expanded="true" />
-            <element signature="e#769#770#0" expanded="true" />
-            <element signature="e#815#816#0" expanded="true" />
-            <element signature="e#853#854#0" expanded="true" />
-            <element signature="e#2356#2357#0" expanded="true" />
-            <element signature="e#2418#2419#0" expanded="true" />
-            <element signature="e#3438#3439#0" expanded="true" />
-            <element signature="e#3477#3478#0" expanded="true" />
-            <element signature="e#4078#4108#1" expanded="true" />
-            <element signature="e#5403#5404#0" expanded="true" />
-            <element signature="e#5463#5464#0" expanded="true" />
-            <element signature="e#6005#6006#0" expanded="true" />
-            <element signature="e#6051#6052#0" expanded="true" />
-            <element signature="e#7913#7914#0" expanded="true" />
-            <element signature="e#7968#7969#0" expanded="true" />
-            <element signature="e#8005#8006#0" expanded="true" />
-            <element signature="e#8032#8033#0" expanded="true" />
-            <element signature="e#8091#8092#0" expanded="true" />
-            <element signature="e#8118#8119#0" expanded="true" />
-            <element signature="e#8186#8187#0" expanded="true" />
-            <element signature="e#8213#8214#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ArrayList/src/ru/tcivinskaya/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+        <state relative-caret-position="398">
+          <caret line="189" selection-start-line="189" selection-end-line="189" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#212#213#0" expanded="true" />
+            <element signature="e#240#241#0" expanded="true" />
+            <element signature="e#4073#4074#0" expanded="true" />
+            <element signature="e#4108#4109#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -772,16 +745,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/List/src/ru/tcivinskaya/list/SinglyLinkedList.java">
+    <entry file="file://$PROJECT_DIR$/ArrayList/src/ru/tcivinskaya/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="189" selection-start-line="189" selection-end-line="189" />
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#212#213#0" expanded="true" />
-            <element signature="e#240#241#0" expanded="true" />
-            <element signature="e#4073#4074#0" expanded="true" />
-            <element signature="e#4108#4109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ArrayList/src/ru/tcivinskaya/list/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2635">
+          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+          <folding>
+            <element signature="e#2197#2198#0" expanded="true" />
+            <element signature="e#2259#2260#0" expanded="true" />
+            <element signature="e#3678#3679#0" expanded="true" />
+            <element signature="e#3717#3718#0" expanded="true" />
+            <element signature="e#8668#8669#0" expanded="true" />
+            <element signature="e#8723#8724#0" expanded="true" />
           </folding>
         </state>
       </provider>
