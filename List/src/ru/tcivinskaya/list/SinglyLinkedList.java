@@ -21,22 +21,28 @@ public class SinglyLinkedList<T> {
         return p;
     }
 
+    private void checkIndex(int index, String errorMessage) {
+        if (index >= count || index < 0) {
+            throw new IndexOutOfBoundsException(errorMessage);
+        }
+    }
+
     public T getFirstItemData() {
         if (count == 0) {
-            throw new NoSuchElementException("вы пытаетесь получить данные несуществующего первого элемента");
+            throw new NoSuchElementException("Вы пытаетесь получить данные несуществующего первого элемента");
         }
 
         return head.getData();
     }
 
     public T getData(int index) {
-        checkIndex(index, "вы пытаетесь получить данные несуществующего элемента");
+        checkIndex(index, "Вы пытаетесь получить данные несуществующего элемента");
 
         return getItem(index).getData();
     }
 
     public T setData(int index, T data) {
-        checkIndex(index, "вы пытаетесь изменить данные несуществующего элемента");
+        checkIndex(index, "Вы пытаетесь изменить данные несуществующего элемента");
 
         ListItem<T> p = getItem(index);
 
@@ -47,7 +53,7 @@ public class SinglyLinkedList<T> {
     }
 
     public T deleteItem(int index) {
-        checkIndex(index, "вы пытаетесь удалить несуществующий элемент");
+        checkIndex(index, "Вы пытаетесь удалить несуществующий элемент");
 
         if (index == 0) {
             return deleteFirstItem();
@@ -69,7 +75,7 @@ public class SinglyLinkedList<T> {
 
     public void insert(int index, T data) {
         if (index < 0 || index > count) {
-            throw new IndexOutOfBoundsException("ошибка при введении индекса устанавливаемого элемента");
+            throw new IndexOutOfBoundsException("Ошибка при введении индекса устанавливаемого элемента");
         }
 
         if (index == 0) {
@@ -107,7 +113,7 @@ public class SinglyLinkedList<T> {
 
     public T deleteFirstItem() {
         if (count == 0) {
-            throw new NoSuchElementException("вы пытаетесь удалить несуществующий первый элемент");
+            throw new NoSuchElementException("Вы пытаетесь удалить несуществующий первый элемент");
         }
 
         T deletedData = head.getData();
@@ -179,11 +185,5 @@ public class SinglyLinkedList<T> {
         lineList.append(p.getData()).append("]");
 
         return lineList.toString();
-    }
-
-    private void checkIndex(int index, String errorMessage) {
-        if (index >= count || index < 0) {
-            throw new IndexOutOfBoundsException(errorMessage);
-        }
     }
 }

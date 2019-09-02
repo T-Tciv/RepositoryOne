@@ -8,6 +8,6 @@ public class Main {
         tree.insert(4);
         tree.insert(5);
 
-        System.out.println(tree.find(6));
+        System.out.println(tree.find(null));
     }
 }

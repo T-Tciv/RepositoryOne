@@ -34,7 +34,7 @@ public class Main {
         System.out.println("Проверка наличия элемента в списке: " + element);
         System.out.println(lines.contains(element));
 
-        list = new ArrayList<>(Arrays.asList("1", "2", "3"));
+        list = new ArrayList<>(Arrays.asList("1", "2", "3", "4"));
         System.out.println("Проверка наличия элементов коллекции в списке: " + list);
         System.out.println(lines.containsAll(list));
 

@@ -1,6 +1,7 @@
 package ru.tcivinskaya.tree;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 public class Tree<T> {
     private TreeNode<T> rootNode;
@@ -14,7 +15,7 @@ public class Tree<T> {
         }
 
         TreeNode<T> node = rootNode;
-
+//TODO: установка элемента-null
         //noinspection unchecked
         Comparable<T> comparableData = (Comparable<T>) data;
 
@@ -73,38 +74,123 @@ public class Tree<T> {
         ++count;
     }
 
-    public boolean find(T data) {
+    private TreeNode<T> getNodeParent(T data) {
         TreeNode<T> node = rootNode;
+        TreeNode<T> parentNode = null;
+
+        if (data == null) {
+            while (node != null) {
+                if (node.getData() == null) {
+                    return parentNode;
+                } else {
+                    parentNode = node;
+                    node = node.getLeft();
+                }
+            }
+
+            return null;
+        }
 
         //noinspection unchecked
         Comparable<T> comparableData = (Comparable<T>) data;
 
         while (node != null) {
             if (comparableData.compareTo(node.getData()) == 0) {
-                return true;
+                return parentNode;
             } else if (comparableData.compareTo(node.getData()) < 0) {
+                parentNode = node;
                 node = node.getLeft();
             } else {
+                parentNode = node;
                 node = node.getRight();
             }
+        }
+
+        return null;
+    }
+
+    private TreeNode<T> getNodeParent(T data, Comparator<T> comparator) {
+        TreeNode<T> node = rootNode;
+        TreeNode<T> parentNode = null;
+
+        while (node != null) {
+            if (comparator.compare(data, node.getData()) == 0) {
+                return parentNode;
+            } else if (comparator.compare(data, node.getData()) < 0) {
+                parentNode = node;
+                node = node.getLeft();
+            } else {
+                parentNode = node;
+                node = node.getRight();
+            }
+        }
+
+        return null;
+    }
+
+    public boolean find(T data) {
+        if (count == 0) {
+            return false;
+        }
+
+        if (Objects.equals(rootNode.getData(), data)) {
+            return true;
+        }
+
+        return getNodeParent(data) != null;
+    }
+
+    public boolean find(T data, Comparator<T> comparator) {
+        if (count == 0) {
+            return false;
+        }
+
+        if (Objects.equals(rootNode.getData(), data)) {
+            return true;
+        }
+
+        return getNodeParent(data, comparator) != null;
+    }
+
+    public boolean delete(T data) {
+        TreeNode<T> parentNode = getNodeParent(data);
+
+        if (parentNode == null) {
+            return false;
+        }
+
+        TreeNode<T> node = parentNode.getLeft();
+        boolean isLeft = true;
+
+        if (parentNode.getRight() != null && Objects.equals(parentNode.getRight(), data)) {
+            node = parentNode.getRight();
+            isLeft = false;
+        }
+
+        if (node.getRight() == null) {
+            if (isLeft) {
+                parentNode.setLeft(node.getLeft());
+            } else {
+                parentNode.setRight(node.getLeft());
+            }
+
+            return true;
+        }
+
+        if (node.getLeft() == null) {
+            if (isLeft) {
+                parentNode.setLeft(node.getRight());
+            } else {
+                parentNode.setRight(node.getRight());
+            }
+
+            return true;
         }
 
         return false;
     }
 
-    public boolean find(T data, Comparator<T> comparator) {
-        TreeNode<T> node = rootNode;
-
-        while (node != null) {
-            if (comparator.compare(data, node.getData()) == 0) {
-                return true;
-            } else if (comparator.compare(data, node.getData()) < 0) {
-                node = node.getLeft();
-            } else {
-                node = node.getRight();
-            }
-        }
-
+    public boolean delete(T data, Comparator<T> comparator) {
         return false;
     }
 
