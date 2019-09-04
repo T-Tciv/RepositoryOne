@@ -13,14 +13,15 @@ public class ArrayList<E> implements List<E> {
     }
 
     public ArrayList(List<E> list) {
-        if (list.size() <= 0) {
-            throw new IllegalArgumentException("Величина переданного списка должна быть положительной");
+        if (list.size() == 0) {
+            //noinspection unchecked
+            items = (E[]) new Object[10];
+        } else {
+            //noinspection unchecked
+            items = (E[]) new Object[list.size() * 2];
+
+            addAll(list);
         }
-
-        //noinspection unchecked
-        items = (E[]) new Object[list.size() * 2];
-
-        addAll(list);
     }
 
     public ArrayList(int capacity) {
@@ -124,6 +125,10 @@ public class ArrayList<E> implements List<E> {
     public boolean addAll(Collection<? extends E> c) {
         excludeNullCollection(c, "Вы пытаетесь добавить в список коллекцию-null");
 
+        if (c.size() == 0) {
+            return false;
+        }
+
         ensureCapacity(listLength + c.size());
 
         int i = listLength;
@@ -135,7 +140,7 @@ public class ArrayList<E> implements List<E> {
         listLength += c.size();
         ++modCount;
 
-        return c.size() != 0;
+        return true;
     }
 
     @Override
@@ -146,12 +151,15 @@ public class ArrayList<E> implements List<E> {
 
         excludeNullCollection(c, "Вы пытаетесь добавить в список коллекцию-null");
 
+        if (c.size() == 0) {
+            return false;
+        }
+
         ensureCapacity(listLength + c.size());
 
         if (index < listLength) {
             System.arraycopy(items, index, items, index + c.size(), c.size());
         }
-
 
         int i = index;
         for (E element : c) {
@@ -162,7 +170,7 @@ public class ArrayList<E> implements List<E> {
         listLength += c.size();
         ++modCount;
 
-        return c.size() != 0;
+        return true;
     }
 
     @Override
@@ -225,7 +233,7 @@ public class ArrayList<E> implements List<E> {
         int itemsHash = 1;
 
         for (int i = 0; i < listLength; ++i) {
-            itemsHash = prime * itemsHash + items[i].hashCode();
+            itemsHash = prime * itemsHash + Objects.hashCode(items[i]);
         }
 
         hash = prime * hash + itemsHash;

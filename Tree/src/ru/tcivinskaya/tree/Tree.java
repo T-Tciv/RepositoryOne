@@ -1,7 +1,6 @@
 package ru.tcivinskaya.tree;
 
-import java.util.Comparator;
-import java.util.Objects;
+import java.util.*;
 
 public class Tree<T> {
     private TreeNode<T> rootNode;
@@ -152,13 +151,71 @@ public class Tree<T> {
         return getNodeParent(data, comparator) != null;
     }
 
-    public boolean delete(T data) {
-        TreeNode<T> parentNode = getNodeParent(data);
+    private void deleteNodeWithIncompleteChildrenCount(TreeNode<T> parentNode, TreeNode<T> node, boolean isLeft) {
+        if (node.getRight() == null) {
+            if (isLeft) {
+                parentNode.setLeft(node.getLeft());
+            } else {
+                parentNode.setRight(node.getLeft());
+            }
 
-        if (parentNode == null) {
-            return false;
+            return;
         }
 
+        if (isLeft) {
+            parentNode.setLeft(node.getRight());
+        } else {
+            parentNode.setRight(node.getRight());
+        }
+    }
+
+    private void deleteNodeWithTwoChildren(TreeNode<T> parentNode, TreeNode<T> node, boolean isLeft) {
+        TreeNode<T> minNodeParent = parentNode;
+        TreeNode<T> minNode = node;
+
+        while (minNode.getLeft() != null) {
+            minNodeParent = minNode;
+            minNode = minNode.getLeft();
+        }
+
+        minNodeParent.setLeft(minNode.getRight());
+        minNode.setLeft(node.getLeft());
+        minNode.setRight(node.getRight());
+
+        if (isLeft) {
+            parentNode.setLeft(minNode);
+        } else {
+            parentNode.setRight(minNode);
+        }
+    }
+
+    private void deleteRootNode() {
+        if (rootNode.getRight() == null) {
+            rootNode = rootNode.getLeft();
+            return;
+        }
+
+        if (rootNode.getLeft() == null) {
+            rootNode = rootNode.getRight();
+            return;
+        }
+
+        TreeNode<T> minNode = rootNode;
+        TreeNode<T> minNodeParent = null;
+
+        while (minNode.getLeft() != null) {
+            minNodeParent = minNode;
+            minNode = minNode.getLeft();
+        }
+
+        if (minNodeParent != null && minNode.getRight() != null) {
+            minNodeParent.setRight(minNode.getRight());
+        }
+
+        rootNode = minNode;
+    }
+
+    private void delete(TreeNode<T> parentNode, T data) {
         TreeNode<T> node = parentNode.getLeft();
         boolean isLeft = true;
 
@@ -167,31 +224,113 @@ public class Tree<T> {
             isLeft = false;
         }
 
-        if (node.getRight() == null) {
-            if (isLeft) {
-                parentNode.setLeft(node.getLeft());
-            } else {
-                parentNode.setRight(node.getLeft());
-            }
+        if (node.getLeft() == null || node.getRight() == null) {
+            deleteNodeWithIncompleteChildrenCount(parentNode, node, isLeft);
+            return;
+        }
 
+        deleteNodeWithTwoChildren(parentNode, node, isLeft);
+    }
+
+    public boolean delete(T data) {
+        TreeNode<T> parentNode = getNodeParent(data);
+
+        if (count != 0 && Objects.equals(rootNode.getData(), data)) {
+            deleteRootNode();
+            --count;
             return true;
         }
 
-        if (node.getLeft() == null) {
-            if (isLeft) {
-                parentNode.setLeft(node.getRight());
-            } else {
-                parentNode.setRight(node.getRight());
-            }
-
-            return true;
+        if (parentNode == null) {
+            return false;
         }
 
-        return false;
+        delete(parentNode, data);
+        --count;
+
+        return true;
     }
 
     public boolean delete(T data, Comparator<T> comparator) {
-        return false;
+        TreeNode<T> parentNode = getNodeParent(data, comparator);
+
+        if (count != 0 && Objects.equals(rootNode.getData(), data)) {
+            deleteRootNode();
+            --count;
+            return true;
+        }
+
+        if (parentNode == null) {
+            return false;
+        }
+
+        delete(parentNode, data);
+        --count;
+
+        return true;
+    }
+
+    public void makeBreadthFirstTraversal() {
+        if (count == 0) {
+            return;
+        }
+
+        Queue<TreeNode<T>> elementsQueue = new LinkedList<>();
+
+        elementsQueue.add(rootNode);
+
+        while (!elementsQueue.isEmpty()) {
+            TreeNode<T> node = elementsQueue.remove();
+
+            System.out.println(node.getData());
+
+            if (node.getLeft() != null) {
+                elementsQueue.add(node.getLeft());
+            }
+
+            if (node.getRight() != null) {
+                elementsQueue.add(node.getRight());
+            }
+        }
+    }
+
+    public void makeDepthFirstTraversal() {
+        if (count == 0) {
+            return;
+        }
+
+        Deque<TreeNode<T>> elementsDeque = new LinkedList<>();
+
+        elementsDeque.add(rootNode);
+
+        while (!elementsDeque.isEmpty()) {
+            TreeNode<T> node = elementsDeque.removeLast();
+
+            System.out.println(node.getData());
+
+            if (node.getRight() != null) {
+                elementsDeque.add(node.getRight());
+            }
+
+            if (node.getLeft() != null) {
+                elementsDeque.add(node.getLeft());
+            }
+        }
+    }
+
+    private void visit(TreeNode<T> node) {
+        if (node == null) {
+            return;
+        }
+
+        System.out.println(node.getData());
+
+        visit(node.getLeft());
+        visit(node.getRight());
+    }
+
+    public void makeDepthFirstTraversalWithRecursion () {
+        visit(rootNode);
     }
 
     public int getSize() {
