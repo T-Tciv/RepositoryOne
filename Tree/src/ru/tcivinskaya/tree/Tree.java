@@ -6,73 +6,52 @@ import java.util.function.Consumer;
 public class Tree<T> {
     private TreeNode<T> rootNode;
     private int count;
+    private Comparator<T> comparator;
 
-    public void insert(T data) {
-        if (count == 0) {
-            rootNode = new TreeNode<>(data);
-            ++count;
-            return;
+    public Tree() {
+    }
+
+    public Tree(Comparator<T> comparator) {
+        this.comparator = comparator;
+    }
+
+    private int compare(T data1, T data2) {
+        if (comparator != null) {
+            return comparator.compare(data1, data2);
         }
 
-        ++count;
-        TreeNode<T> node = rootNode;
-
-        if (data == null) {
-            while (node.getLeft() != null) {
-                node = node.getLeft();
+        if (data1 == null) {
+            if (data2 == null) {
+                return 0;
             }
 
-            if (node.getData() == null) {
-                while (node.getRight() != null) {
-                    node = node.getRight();
-                }
+            return -1;
+        }
 
-                node.setRight(new TreeNode<>(null));
-                return;
-            }
-
-            node.setLeft(new TreeNode<>(null));
-            return;
+        if (data2 == null) {
+            return 1;
         }
 
         //noinspection unchecked
-        Comparable<T> comparableData = (Comparable<T>) data;
+        Comparable<T> comparableData = (Comparable<T>) data1;
 
-        boolean isInserted = false;
-
-        while (!isInserted) {
-            if (comparableData.compareTo(node.getData()) < 0) {
-                if (node.getLeft() != null) {
-                    node = node.getLeft();
-                } else {
-                    node.setLeft(new TreeNode<>(data));
-                    isInserted = true;
-                }
-            } else {
-                if (node.getRight() != null) {
-                    node = node.getRight();
-                } else {
-                    node.setRight(new TreeNode<>(data));
-                    isInserted = true;
-                }
-            }
-        }
+        return comparableData.compareTo(data2);
     }
 
-    public void insert(T data, Comparator<T> comparator) {
-        if (count == 0) {
+    public void insert(T data) {
+        ++count;
+
+        if (count == 1) {
             rootNode = new TreeNode<>(data);
-            ++count;
             return;
         }
 
-        ++count;
         TreeNode<T> node = rootNode;
 
         boolean isInserted = false;
 
         while (!isInserted) {
-            if (comparator.compare(data, node.getData()) < 0) {
+            if (compare(data, node.getData()) < 0) {
                 if (node.getLeft() != null) {
                     node = node.getLeft();
                 } else {
@@ -94,45 +73,10 @@ public class Tree<T> {
         TreeNode<T> node = rootNode;
         TreeNode<T> parentNode = null;
 
-        if (data == null) {
-            while (node != null) {
-                if (node.getData() == null) {
-                    return parentNode;
-                } else {
-                    parentNode = node;
-                    node = node.getLeft();
-                }
-            }
-
-            return null;
-        }
-
-        //noinspection unchecked
-        Comparable<T> comparableData = (Comparable<T>) data;
-
         while (node != null) {
-            if (comparableData.compareTo(node.getData()) == 0) {
+            if (compare(data, node.getData()) == 0) {
                 return parentNode;
-            } else if (comparableData.compareTo(node.getData()) < 0) {
-                parentNode = node;
-                node = node.getLeft();
-            } else {
-                parentNode = node;
-                node = node.getRight();
-            }
-        }
-
-        return null;
-    }
-
-    private TreeNode<T> getNodeParent(T data, Comparator<T> comparator) {
-        TreeNode<T> node = rootNode;
-        TreeNode<T> parentNode = null;
-
-        while (node != null) {
-            if (comparator.compare(data, node.getData()) == 0) {
-                return parentNode;
-            } else if (comparator.compare(data, node.getData()) < 0) {
+            } else if (compare(data, node.getData()) < 0) {
                 parentNode = node;
                 node = node.getLeft();
             } else {
@@ -145,27 +89,11 @@ public class Tree<T> {
     }
 
     public boolean find(T data) {
-        if (count == 0) {
-            return false;
-        }
-
-        if (Objects.equals(rootNode.getData(), data)) {
+        if (compare(rootNode.getData(), data) == 0) {
             return true;
         }
 
         return getNodeParent(data) != null;
-    }
-
-    public boolean find(T data, Comparator<T> comparator) {
-        if (count == 0) {
-            return false;
-        }
-
-        if (Objects.equals(rootNode.getData(), data)) {
-            return true;
-        }
-
-        return getNodeParent(data, comparator) != null;
     }
 
     private void deleteNodeWithIncompleteChildrenCount(TreeNode<T> parentNode, TreeNode<T> node, boolean isNodeLeft) {
@@ -239,7 +167,7 @@ public class Tree<T> {
         TreeNode<T> node = parentNode.getLeft();
         boolean isNodeLeft = true;
 
-        if (parentNode.getRight() != null && Objects.equals(parentNode.getRight().getData(), data)) {
+        if (parentNode.getRight() != null && compare(parentNode.getRight().getData(), data) == 0) {
             node = parentNode.getRight();
             isNodeLeft = false;
         }
@@ -255,26 +183,7 @@ public class Tree<T> {
     public boolean delete(T data) {
         TreeNode<T> parentNode = getNodeParent(data);
 
-        if (count != 0 && Objects.equals(rootNode.getData(), data)) {
-            deleteRootNode();
-            --count;
-            return true;
-        }
-
-        if (parentNode == null) {
-            return false;
-        }
-
-        delete(parentNode, data);
-        --count;
-
-        return true;
-    }
-
-    public boolean delete(T data, Comparator<T> comparator) {
-        TreeNode<T> parentNode = getNodeParent(data, comparator);
-
-        if (count != 0 && Objects.equals(rootNode.getData(), data)) {
+        if (count != 0 && compare(rootNode.getData(), data) == 0) {
             deleteRootNode();
             --count;
             return true;
