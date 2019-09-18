@@ -39,13 +39,13 @@ public class Tree<T> {
     }
 
     public void insert(T data) {
-        ++count;
-
-        if (count == 1) {
+        if (count == 0) {
             rootNode = new TreeNode<>(data);
+            ++count;
             return;
         }
 
+        ++count;
         TreeNode<T> node = rootNode;
 
         boolean isInserted = false;

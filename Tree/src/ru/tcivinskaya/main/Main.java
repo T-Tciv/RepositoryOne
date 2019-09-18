@@ -30,19 +30,23 @@ public class Main {
 
         System.out.println("Вставка и обход в ширину:");
         Tree<Integer> tree = new Tree<>();
-        tree.insert(4);
-        tree.insert(2);
-        tree.insert(3);
-        tree.insert(null);
-        tree.insert(7);
-        tree.insert(5);
-        tree.insert(9);
-        tree.insert(8);
-        tree.insert(10);
-        tree.insert(6);
+
+        for (Integer number : new Integer[]{18, 10, 4, 14, 12, 16, 13}) { //4, 2, 3, null, 7, 5, 9, 8, 10, 6
+            tree.insert(number);
+        }
 
         tree.makeBreadthFirstTraversal(consumer);
         System.out.println();
+        System.out.println(tree.getSize());
+
+        System.out.println(tree.delete(10));
+        System.out.println(tree.delete(14));
+        System.out.println(tree.getSize());
+
+        tree.makeBreadthFirstTraversal(consumer);
+        System.out.println();
+        tree.makeDepthFirstTraversal(consumer);
+        /*
 
         System.out.println("Поиск:");
         for (Integer number : new Integer[]{3, 10, -1, null}) {
@@ -69,16 +73,10 @@ public class Main {
 
         System.out.println("Вставка и обход в ширину:");
         Tree<Integer> treeWithComparator = new Tree<>(comparator);
-        treeWithComparator.insert(4);
-        treeWithComparator.insert(2);
-        treeWithComparator.insert(3);
-        treeWithComparator.insert(null);
-        treeWithComparator.insert(7);
-        treeWithComparator.insert(5);
-        treeWithComparator.insert(9);
-        treeWithComparator.insert(8);
-        treeWithComparator.insert(10);
-        treeWithComparator.insert(6);
+
+        for (Integer number : new Integer[]{4, 2, 3, null, 7, 5, 9, 8, 10, 6}) {
+            treeWithComparator.insert(number);
+        }
 
         treeWithComparator.makeBreadthFirstTraversal(consumer);
         System.out.println();
@@ -101,5 +99,7 @@ public class Main {
         treeWithComparator.makeDepthFirstTraversal(consumer);
         System.out.println();
         treeWithComparator.makeDepthFirstTraversalWithRecursion(consumer);
+        */
     }
 }
+
