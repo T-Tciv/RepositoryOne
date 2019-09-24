@@ -115,15 +115,25 @@ public class Tree<T> {
     }
 
     private void deleteNodeWithTwoChildren(TreeNode<T> parentNode, TreeNode<T> node, boolean isNodeLeft) {
-        TreeNode<T> minNodeParent = parentNode;
-        TreeNode<T> minNode = node;
+        TreeNode<T> minNodeParent = node;
+        TreeNode<T> minNode = node.getRight();
+        boolean isMinNodeLeft = false;
+
+        if (minNode.getLeft() != null) {
+            isMinNodeLeft = true;
+        }
 
         while (minNode.getLeft() != null) {
             minNodeParent = minNode;
             minNode = minNode.getLeft();
         }
 
-        minNodeParent.setLeft(minNode.getRight());
+        if (isMinNodeLeft) {
+            minNodeParent.setLeft(minNode.getRight());
+        } else {
+            minNodeParent.setRight(minNode.getRight());
+        }
+
         minNode.setLeft(node.getLeft());
         minNode.setRight(node.getRight());
 

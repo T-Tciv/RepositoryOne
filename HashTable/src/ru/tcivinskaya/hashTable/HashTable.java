@@ -3,13 +3,13 @@ package ru.tcivinskaya.hashTable;
 import java.util.*;
 
 public class HashTable<T> implements Collection<T> {
-    private ArrayList<T>[] hashTableArray;
+    private ArrayList<T>[] array;
     private int count;
     private int modCount;
 
     public HashTable() {
         //noinspection unchecked
-        hashTableArray = (ArrayList<T>[]) new ArrayList[10];
+        array = (ArrayList<T>[]) new ArrayList[10];
     }
 
     public HashTable(int hashTableSize) {
@@ -18,7 +18,7 @@ public class HashTable<T> implements Collection<T> {
         }
 
         //noinspection unchecked
-        hashTableArray = (ArrayList<T>[]) new ArrayList[hashTableSize];
+        array = (ArrayList<T>[]) new ArrayList[hashTableSize];
     }
 
     private static void excludeNullCollection(Collection<?> c, String errorMessage) {
@@ -28,7 +28,7 @@ public class HashTable<T> implements Collection<T> {
     }
 
     private int getArrayIndex(Object object) {
-        return Math.abs(Objects.hashCode(object) % hashTableArray.length);
+        return Math.abs(Objects.hashCode(object) % array.length);
     }
 
     @Override
@@ -45,11 +45,11 @@ public class HashTable<T> implements Collection<T> {
     public boolean add(T t) {
         int index = getArrayIndex(t);
 
-        if (hashTableArray[index] == null) {
-            hashTableArray[index] = new ArrayList<>();
+        if (array[index] == null) {
+            array[index] = new ArrayList<>();
         }
 
-        hashTableArray[index].add(t);
+        array[index].add(t);
         ++count;
         ++modCount;
 
@@ -74,7 +74,7 @@ public class HashTable<T> implements Collection<T> {
     @Override
     public void clear() {
         if (count != 0) {
-            for (ArrayList<T> list : hashTableArray) {
+            for (ArrayList<T> list : array) {
                 if (list != null) {
                     list.clear();
                 }
@@ -89,7 +89,7 @@ public class HashTable<T> implements Collection<T> {
     public boolean contains(Object o) {
         int index = getArrayIndex(o);
 
-        return hashTableArray[index] != null && hashTableArray[index].contains(o);
+        return array[index] != null && array[index].contains(o);
     }
 
     @Override
@@ -118,12 +118,12 @@ public class HashTable<T> implements Collection<T> {
         //noinspection unchecked
         HashTable<T> comparedObject = (HashTable<T>) obj;
 
-        if (hashTableArray.length != comparedObject.hashTableArray.length) {
+        if (array.length != comparedObject.array.length) {
             return false;
         }
 
-        for (int i = 0; i < hashTableArray.length; ++i) {
-            if (!Objects.equals(hashTableArray[i], comparedObject.hashTableArray[i])) {
+        for (int i = 0; i < array.length; ++i) {
+            if (!Objects.equals(array[i], comparedObject.array[i])) {
                 return false;
             }
         }
@@ -136,7 +136,7 @@ public class HashTable<T> implements Collection<T> {
         final int prime = 37;
         int hash = 1;
 
-        hash = prime * hash + Arrays.hashCode(hashTableArray);
+        hash = prime * hash + Arrays.hashCode(array);
         hash = prime * hash + count;
         hash = prime * hash + modCount;
 
@@ -183,19 +183,19 @@ public class HashTable<T> implements Collection<T> {
 
             ++processedElementsCount;
 
-            if (hashTableArray[currentArrayIndex] != null && currentListIndex + 1 < hashTableArray[currentArrayIndex].size()) {
+            if (array[currentArrayIndex] != null && currentListIndex + 1 < array[currentArrayIndex].size()) {
                 ++currentListIndex;
 
-                return hashTableArray[currentArrayIndex].get(currentListIndex);
+                return array[currentArrayIndex].get(currentListIndex);
             } else {
                 ++currentArrayIndex;
                 currentListIndex = 0;
 
-                while (hashTableArray[currentArrayIndex] == null || hashTableArray[currentArrayIndex].size() == 0) {
+                while (array[currentArrayIndex] == null || array[currentArrayIndex].size() == 0) {
                     ++currentArrayIndex;
                 }
 
-                return hashTableArray[currentArrayIndex].get(currentListIndex);
+                return array[currentArrayIndex].get(currentListIndex);
             }
         }
     }
@@ -213,11 +213,11 @@ public class HashTable<T> implements Collection<T> {
 
         int index = getArrayIndex(o);
 
-        if (hashTableArray[index] == null) {
+        if (array[index] == null) {
             return false;
         }
 
-        if (hashTableArray[getArrayIndex(o)].remove(o)) {
+        if (array[getArrayIndex(o)].remove(o)) {
             --count;
             ++modCount;
             return true;
@@ -252,7 +252,7 @@ public class HashTable<T> implements Collection<T> {
         excludeNullCollection(c, "Вы пытаетесь удалить из хэш-таблицы элементы, не содержащися в коллекции-null");
 
         int currentModCount = modCount;
-        for (ArrayList<T> list : hashTableArray) {
+        for (ArrayList<T> list : array) {
             if (list != null) {
                 int i = 0;
 

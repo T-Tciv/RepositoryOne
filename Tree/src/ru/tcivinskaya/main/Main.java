@@ -29,24 +29,15 @@ public class Main {
         System.out.println("    Дерево без компаратора");
 
         System.out.println("Вставка и обход в ширину:");
+
         Tree<Integer> tree = new Tree<>();
 
-        for (Integer number : new Integer[]{18, 10, 4, 14, 12, 16, 13}) { //4, 2, 3, null, 7, 5, 9, 8, 10, 6
+        for (Integer number : new Integer[]{18, 10, 4, 14, 12, 16, 13}) {
             tree.insert(number);
         }
 
         tree.makeBreadthFirstTraversal(consumer);
         System.out.println();
-        System.out.println(tree.getSize());
-
-        System.out.println(tree.delete(10));
-        System.out.println(tree.delete(14));
-        System.out.println(tree.getSize());
-
-        tree.makeBreadthFirstTraversal(consumer);
-        System.out.println();
-        tree.makeDepthFirstTraversal(consumer);
-        /*
 
         System.out.println("Поиск:");
         for (Integer number : new Integer[]{3, 10, -1, null}) {
@@ -56,7 +47,7 @@ public class Main {
         System.out.println("Удаление первого вхождения элемента:");
         tree.makeBreadthFirstTraversal(consumer);
         System.out.println();
-        for (Integer number : new Integer[]{5, 4, -1, 7}) {
+        for (Integer number : new Integer[]{10, 14, -1, 7}) {
             System.out.printf("%d: %s", number, tree.delete(number) + System.lineSeparator());
             tree.makeBreadthFirstTraversal(consumer);
             System.out.println();
@@ -74,7 +65,7 @@ public class Main {
         System.out.println("Вставка и обход в ширину:");
         Tree<Integer> treeWithComparator = new Tree<>(comparator);
 
-        for (Integer number : new Integer[]{4, 2, 3, null, 7, 5, 9, 8, 10, 6}) {
+        for (Integer number : new Integer[]{18, 10, 4, 14, 12, 16, 13}) {
             treeWithComparator.insert(number);
         }
 
@@ -89,7 +80,7 @@ public class Main {
         System.out.println("Удаление первого вхождения элемента:");
         treeWithComparator.makeBreadthFirstTraversal(consumer);
         System.out.println();
-        for (Integer number : new Integer[]{5, 4, -1, 7}) {
+        for (Integer number : new Integer[]{10, 14, -1, 7}) {
             System.out.printf("%d: %s", number, treeWithComparator.delete(number) + System.lineSeparator());
             treeWithComparator.makeBreadthFirstTraversal(consumer);
             System.out.println();
@@ -99,7 +90,6 @@ public class Main {
         treeWithComparator.makeDepthFirstTraversal(consumer);
         System.out.println();
         treeWithComparator.makeDepthFirstTraversalWithRecursion(consumer);
-        */
     }
 }
 
