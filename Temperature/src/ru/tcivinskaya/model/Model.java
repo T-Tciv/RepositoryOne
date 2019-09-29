@@ -1,26 +1,14 @@
 package ru.tcivinskaya.model;
 
+import ru.tcivinskaya.main.Units;
+
 public class Model {
-    private double temperature;
+    private double initialTemperature;
     private Units initialUnit;
     private Units finalUnit;
 
-    public Model(double temperature, Units initialUnit, Units finalUnit) {
-        this.temperature = temperature;
-        this.initialUnit = initialUnit;
-        this.finalUnit = finalUnit;
-    }
-
-    public double getTemperature() {
-        return temperature;
-    }
-
-    public void setTemperature(double temperature) {
-        this.temperature = temperature;
-    }
-
-    public Units getInitialUnit() {
-        return initialUnit;
+    public void setInitialTemperature(double initialTemperature) {
+        this.initialTemperature = initialTemperature;
     }
 
     public void setInitialUnit(Units initialUnit) {
@@ -31,13 +19,23 @@ public class Model {
         this.finalUnit = finalUnit;
     }
 
-    public Units getFinalUnit() {
-        return finalUnit;
-    }
+    public double getFinalTemperature() {
+        double finalTemperature = initialTemperature;
 
-    public void changeUnit() {
-        if (initialUnit == Units.CELSIUM) {
+        if (finalUnit != initialUnit) {
+            if (initialUnit == Units.KELVIN) {
+                finalTemperature = initialTemperature - 273.15;
+            } else if (initialUnit == Units.FAHRENHEIT) {
+                finalTemperature = (initialTemperature - 32) * 5.0 / 9;
+            }
 
+            if (finalUnit == Units.KELVIN) {
+                finalTemperature += 273.15;
+            } else if (finalUnit == Units.FAHRENHEIT) {
+                finalTemperature = 9.0 / 5 * finalTemperature + 32;
+            }
         }
+
+        return finalTemperature;
     }
 }
