@@ -251,14 +251,16 @@ public class HashTable<T> implements Collection<T> {
     public boolean retainAll(Collection<?> c) {
         excludeNullCollection(c, "Вы пытаетесь удалить из хэш-таблицы элементы, не содержащися в коллекции-null");
 
-        int currentModCount = modCount;
+        int currentCount = count;
         for (ArrayList<T> list : array) {
             if (list != null) {
                 int i = 0;
 
                 while (i != list.size()) {
                     if (!c.contains(list.get(i))) {
-                        remove(list.get(i));
+                        list.remove(i);
+                        --count;
+                        ++modCount;
                     } else {
                         ++i;
                     }
@@ -266,7 +268,7 @@ public class HashTable<T> implements Collection<T> {
             }
         }
 
-        return currentModCount != modCount;
+        return currentCount != count;
     }
 
     @Override
@@ -288,20 +290,14 @@ public class HashTable<T> implements Collection<T> {
             throw new IllegalArgumentException("Вы пытаетесь преобразовать массив, являющийся null");
         }
 
-        //noinspection unchecked
-        T1[] array = (T1[]) new Object[count];
-        int index = 0;
-
-        for (T element : this) {
-            //noinspection unchecked
-            array[index] = (T1) element;
-            ++index;
-        }
+        Object[] array = toArray();
 
         if (a.length < count) {
-            return array;
+            //noinspection unchecked
+            return (T1[]) Arrays.copyOf(array, count, a.getClass());
         }
 
+        //noinspection SuspiciousSystemArraycopy
         System.arraycopy(array, 0, a, 0, count);
 
         if (a.length > count) {
