@@ -74,9 +74,11 @@ public class Tree<T> {
         TreeNode<T> parentNode = null;
 
         while (node != null) {
-            if (compare(data, node.getData()) == 0) {
+            int comparisonValue = compare(data, node.getData());
+
+            if (comparisonValue == 0) {
                 return parentNode;
-            } else if (compare(data, node.getData()) < 0) {
+            } else if (comparisonValue < 0) {
                 parentNode = node;
                 node = node.getLeft();
             } else {
@@ -89,6 +91,10 @@ public class Tree<T> {
     }
 
     public boolean find(T data) {
+        if (count == 0) {
+            return false;
+        }
+
         if (compare(rootNode.getData(), data) == 0) {
             return true;
         }
@@ -191,9 +197,13 @@ public class Tree<T> {
     }
 
     public boolean delete(T data) {
+        if (count == 0) {
+            return false;
+        }
+
         TreeNode<T> parentNode = getNodeParent(data);
 
-        if (count != 0 && compare(rootNode.getData(), data) == 0) {
+        if (compare(rootNode.getData(), data) == 0) {
             deleteRootNode();
             --count;
             return true;
