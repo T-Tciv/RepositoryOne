@@ -1,5 +1,6 @@
 package ru.tcivinskaya.view;
 
+import ru.tcivinskaya.controller.Controller;
 import ru.tcivinskaya.main.Units;
 
 import javax.swing.*;
@@ -7,6 +8,7 @@ import java.awt.*;
 import java.util.Objects;
 
 public class View {
+    private Controller controller;
     private double finalTemperature;
     private DefaultComboBoxModel<String> initialListModel = new DefaultComboBoxModel<>(new String[]{"Цельсий", "Кельвин", "Фаренгейт"});
     private JComboBox<String> initialUnitsList = new JComboBox<>(initialListModel);
@@ -14,7 +16,6 @@ public class View {
     private JComboBox<String> finalUnitsList = new JComboBox<>(finalListModel);
     private JTextField initialTemperatureTextField;
     private JTextField finalTemperatureTextField;
-    private JButton button;
 
     public View() {
         JFrame frame = new JFrame("Перевод температур");
@@ -70,53 +71,41 @@ public class View {
         constraints.gridwidth = 2;
         constraints.weightx = 1;
         constraints.weighty = 0.25;
-        button = new JButton("Перевести");
+        JButton button = new JButton("Перевести");
         button.setFont(new Font("Verdana", Font.PLAIN, 20));
+        button.addActionListener(x -> controller.getFinalTemperature());
         frame.add(button, constraints);
     }
 
-    public JComboBox<String> getInitialUnitsList() {
-        return initialUnitsList;
+    public void setController(Controller controller) {
+        this.controller = controller;
     }
 
-    public Units getInitialUnit() {
-        String initialUnit = (String) initialUnitsList.getSelectedItem();
+    public String getInitialUnit() {
+        return (String) initialUnitsList.getSelectedItem();
+    }
 
-        if (Objects.equals(initialUnit, "Цельсий")) {
-            return Units.CELSIUS;
+    public String getFinalUnit() {
+        return  (String) finalUnitsList.getSelectedItem();
+    }
+
+    public double getInitialTemperature() {
+        String inputLine = initialTemperatureTextField.getText();
+
+        if (!isNumber(inputLine)) {
+            throw new IllegalArgumentException("Температурой может быть только число");
         }
 
-        if (Objects.equals(initialUnit, "Кельвин")) {
-            return Units.KELVIN;
+        return Double.parseDouble(inputLine);
+    }
+
+    private static boolean isNumber(String s) {
+        try {
+            Double.parseDouble(s);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
-
-        return Units.FAHRENHEIT;
-    }
-
-    public JComboBox<String> getFinalUnitsList() {
-        return finalUnitsList;
-    }
-
-    public Units getFinalUnit() {
-        String finalUnit = (String) finalUnitsList.getSelectedItem();
-
-        if (Objects.equals(finalUnit, "Цельсий")) {
-            return Units.CELSIUS;
-        }
-
-        if (Objects.equals(finalUnit, "Кельвин")) {
-            return Units.KELVIN;
-        }
-
-        return Units.FAHRENHEIT;
-    }
-
-    public JTextField getInitialTemperatureTextField() {
-        return initialTemperatureTextField;
-    }
-
-    public JButton getButton() {
-        return button;
     }
 
     public void setFinalTemperature(double finalTemperature) {
