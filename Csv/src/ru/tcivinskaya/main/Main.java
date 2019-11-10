@@ -7,15 +7,29 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        createHtml("input.txt", "output.txt");
+        if (args.length != 2) {
+            throw new IllegalArgumentException("Ошибка при указании путей к файлам в аргументах программы");
+        }
+
+        createHtml(args[0], args[1]);
     }
 
-    private static void createHtml(String csvFileName, String htmlFileName) {
-        try (Scanner scanner = new Scanner(new FileInputStream(csvFileName), "windows-1251"); PrintWriter writer = new PrintWriter(htmlFileName)) {
-            writer.print("<table>");
+    private static void createHtml(String csvFilePath, String htmlFilePath) {
+        String csvCharsetName = "windows-1251";
+
+        try (Scanner scanner = new Scanner(new FileInputStream(csvFilePath), csvCharsetName); PrintWriter writer = new PrintWriter(htmlFilePath)) {
+            writer.println("<!DOCTYPE html>");
+            writer.println("<html>");
+            writer.println("<head>");
+            String htmlCharsetName = "utf-8";
+            writer.println("<meta charset= \"" + htmlCharsetName + "\">");
+            writer.println("<title>Задача 'CSV'</title>");
+            writer.println("</head>");
+            writer.println("<body>");
+            writer.println("<table border=1>");
 
             while (scanner.hasNextLine()) {
-                writer.print("<tr><td>");
+                writer.print("<tr>" + System.lineSeparator() + "<td>");
                 boolean isCellBeginning = true;
 
                 StringBuilder line = new StringBuilder();
@@ -27,8 +41,8 @@ public class Main {
                     char character = line.charAt(i);
 
                     if (character == '"') {
-                        quotesCount += 1;
-                        quotesCountInCell += 1;
+                        ++quotesCount;
+                        ++quotesCountInCell;
 
                         if (isCellBeginning) {
                             quotesCountInCell -= 2;
@@ -40,39 +54,50 @@ public class Main {
                     isCellBeginning = false;
 
                     if (i == line.length() - 1 && quotesCount % 2 == 1) {
-                        line.append(scanner.nextLine());
-                        writer.print(chooseLineToPrint(character) + "<br/>");
+                        writer.print(getLineToPrint(character));
+
+                        while (scanner.hasNextLine()) {
+                            String newLine = scanner.nextLine();
+                            writer.print("<br/>");
+
+                            if (newLine.length() != 0) {
+                                line.append(newLine);
+                                break;
+                            }
+                        }
                     } else if (character == ',' && quotesCount % 2 == 0) {
                         quotesCountInCell = 0;
                         isCellBeginning = true;
-                        writer.print("</td><td>");
+                        writer.print("</td>" + System.lineSeparator() + "<td>");
                     } else {
-                        writer.print(chooseLineToPrint(character));
+                        writer.print(getLineToPrint(character));
                     }
                 }
 
-                writer.print("</td></tr>");
+                writer.println("</td>" + System.lineSeparator() + "</tr>");
             }
 
-            writer.print("</table>");
+            writer.println("</table>");
+            writer.println("</body>");
+            writer.println("</html>");
         } catch (FileNotFoundException e) {
-            System.out.println("Не удается найти указанный файл: " + csvFileName);
+            System.out.println("Не удается найти указанный файл: " + csvFilePath);
         } catch (Exception e) {
             System.out.println("Возникла ошибка при чтении из файла: " + e.getMessage());
         }
     }
 
-    private static String chooseLineToPrint(char c) {
+    private static String getLineToPrint(char c) {
         if (c == '<') {
-            return "&lt";
+            return "&lt;";
         }
 
         if (c == '>') {
-            return "&gt";
+            return "&gt;";
         }
 
         if (c == '&') {
-            return "&amp";
+            return "&amp;";
         }
 
         if (c == '"') {

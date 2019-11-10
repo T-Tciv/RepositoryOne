@@ -3,7 +3,7 @@ package ru.tcivinskaya.scales;
 public class Celsius implements Scales {
     @Override
     public double getCelsius(double temperature) {
-        return 0;
+        return temperature;
     }
 
     @Override
