@@ -8,7 +8,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         if (args.length != 2) {
-            throw new IllegalArgumentException("Ошибка при указании путей к файлам в аргументах программы");
+            System.out.println("Ошибка при указании путей к файлам в аргументах программы");
+            return;
         }
 
         createHtml(args[0], args[1]);
@@ -22,11 +23,11 @@ public class Main {
             writer.println("<html>");
             writer.println("<head>");
             String htmlCharsetName = "utf-8";
-            writer.println("<meta charset= \"" + htmlCharsetName + "\">");
+            writer.println("<meta charset=\"" + htmlCharsetName + "\">");
             writer.println("<title>Задача 'CSV'</title>");
             writer.println("</head>");
             writer.println("<body>");
-            writer.println("<table border=1>");
+            writer.println("<table border=\"1\">");
 
             while (scanner.hasNextLine()) {
                 writer.print("<tr>" + System.lineSeparator() + "<td>");
